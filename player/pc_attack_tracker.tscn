@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhtekd5kgedpy"]
+
+[ext_resource type="Script" path="res://player/pc_attack_tracker.gd" id="1_wc6gj"]
+
+[node name="Node" type="Node" groups=["pc_attack_tracker"]]
+script = ExtResource("1_wc6gj")
+
+[node name="attack_tracker" type="Node" parent="."]

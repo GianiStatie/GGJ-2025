@@ -1,12 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://blvhwsfu73wla"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_bs0pb"]
-[ext_resource type="Texture2D" uid="uid://cuvhrh8lndffd" path="res://icon.svg" id="1_fr85l"]
+[ext_resource type="Texture2D" uid="uid://bs52bomw3ktu2" path="res://icon.svg" id="1_fr85l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pb1hj"]
 size = Vector2(122, 123)
 
 [node name="player" type="CharacterBody2D"]
+collision_layer = 128
+collision_mask = 128
 script = ExtResource("1_bs0pb")
 
 [node name="integrity" type="CollisionShape2D" parent="."]
@@ -23,5 +25,7 @@ texture = ExtResource("1_fr85l")
 
 [node name="dash_timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=4 uid="uid://bwxljiqer0pvs"]
+
+[ext_resource type="PackedScene" uid="uid://dhtekd5kgedpy" path="res://player/pc_attack_tracker.tscn" id="1_u5xf1"]
+[ext_resource type="PackedScene" uid="uid://blvhwsfu73wla" path="res://player/player.tscn" id="2_x4hl1"]
+[ext_resource type="PackedScene" uid="uid://b780a8c64ruei" path="res://map/tile_map_layer.tscn" id="3_ducsp"]
+
+[node name="PlayerTest" type="Node"]
+
+[node name="TileMapLayer" parent="." instance=ExtResource("3_ducsp")]
+position = Vector2(98, 161)
+tile_map_data = PackedByteArray("AAD5//r/AAAAAAIAAAD5//v/AAAAAAIAAAD5//3/AAAAAAIAAAD5//z/AAAAAAIAAAD5//7/AAAAAAIAAAD6////AAAAAAIAAAD6/wAAAAAAAAIAAAD6/wEAAAAAAAIAAAD8/wIAAAAAAAIAAAD7/wEAAAAAAAIAAAD+/wIAAAAAAAIAAAD9/wIAAAAAAAIAAAABAAIAAAAAAAIAAAD//wIAAAAAAAIAAAADAAEAAAAAAAIAAAACAAIAAAAAAAIAAAAFAAEAAAAAAAIAAAAEAAEAAAAAAAIAAAAHAAEAAAAAAAIAAAAGAAEAAAAAAAIAAAAIAAAAAAAAAAIAAAAIAP7/AAAAAAIAAAAIAP//AAAAAAIAAAAIAPz/AAAAAAIAAAAIAP3/AAAAAAIAAAAGAPr/AAAAAAIAAAAHAPv/AAAAAAIAAAADAPr/AAAAAAIAAAAEAPr/AAAAAAIAAAAFAPr/AAAAAAIAAAACAPn/AAAAAAIAAAABAPn/AAAAAAIAAAD///j/AAAAAAIAAAAAAPn/AAAAAAIAAAD+//j/AAAAAAIAAAD9//n/AAAAAAIAAAD8//n/AAAAAAIAAAD7//n/AAAAAAIAAAD6//n/AAAAAAIAAAA=")
+
+[node name="Node" parent="." instance=ExtResource("1_u5xf1")]
+
+[node name="player" parent="." instance=ExtResource("2_x4hl1")]
