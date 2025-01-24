@@ -8,7 +8,7 @@ var health: float = 100 : set = _on_health_changed
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		health -= 10
+		health -= 5
 
 func _on_health_changed(value):
 	var progression = 1 - (value / 100)
