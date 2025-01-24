@@ -20,3 +20,8 @@ texture = ExtResource("1_fr85l")
 position = Vector2(154, -1)
 scale = Vector2(0.253906, 0.21875)
 texture = ExtResource("1_fr85l")
+
+[node name="dash_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
