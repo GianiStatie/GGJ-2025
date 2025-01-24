@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://calspe4mqwgdd"]
+
+[ext_resource type="PackedScene" uid="uid://wsvpcb8bmere" path="res://enemies/enemy.tscn" id="1_36dci"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Enemy" parent="." instance=ExtResource("1_36dci")]
+position = Vector2(560, 292)

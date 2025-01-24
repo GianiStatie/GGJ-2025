@@ -9,7 +9,7 @@ extends Polygon2D
 @export var morph_duration: float = 2.0
 
 # Internal variables
-var current_shape: Array = [] : set = _on_current_shape_updated
+var current_shape: Array = []
 var target_shape: Array = []
 var morph_progress: float = 0.0
 var morphing: bool = false
@@ -25,6 +25,8 @@ func _ready():
 func init(sides: int = 3):
 	target_shape = generate_polygon_points(radius, sides)
 	current_shape = interpolate_shapes(current_shape, target_shape, 1.0)
+	polygon = current_shape
+	shape_changed.emit(polygon)
 
 func generate_circle_points(sides: int, radius: float) -> Array:
 	var points = []
@@ -40,20 +42,17 @@ func generate_polygon_points(radius: float, sides: int = 3) -> Array:
 		points.append(Vector2(radius * cos(angle), radius * sin(angle)))
 	return points
 
-func start_morph_to_circle():
-	target_shape = generate_circle_points(circle_sides, radius)
-	morph_progress = 0.0
-	morphing = true
-
 func _process(delta):
 	if morphing:
 		morph_progress += delta / morph_duration
 		if morph_progress >= 1.0:
 			morph_progress = 1.0
 			morphing = false
+			current_shape = polygon
 		
 		# Interpolate between the circle and the triangle
-		current_shape = interpolate_to_circle(current_shape, target_shape, morph_progress)
+		polygon = interpolate_to_circle(current_shape, target_shape, morph_progress)
+		shape_changed.emit(polygon)
 
 func morph_to_circle(progress: float):
 	if morphing:
@@ -89,8 +88,3 @@ func interpolate_to_circle(shape1: Array, shape2: Array, t: float) -> Array:
 		result.append(p1.lerp(p2, t))
 	
 	return result
-
-func _on_current_shape_updated(shape: Array):
-	polygon = shape
-	current_shape = shape
-	shape_changed.emit(shape)

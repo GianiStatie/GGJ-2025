@@ -9,7 +9,9 @@ gravity_scale = 0.0
 script = ExtResource("1_chkg3")
 
 [node name="EnemyShape" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(43.3013, 25, 43.3013, 25, 43.3013, 25, 43.3013, 25, 43.3013, 25, 43.3013, 25, 43.3013, 25, -43.3013, 25, -43.3013, 25, -43.3013, 25, -43.3013, 25, -43.3013, 25, -43.3013, 25, -43.3013, 25, 0, -50, 0, -50, 0, -50, 0, -50, 3.06162e-15, -50, 0, -50, 0, -50, 0, -50, 0, -50, 43.3013, 25)
 script = ExtResource("2_b7ssp")
+morph_duration = 0.3
 
 [node name="EnemyCollisionShape" type="CollisionPolygon2D" parent="."]
 script = ExtResource("3_lhgys")
