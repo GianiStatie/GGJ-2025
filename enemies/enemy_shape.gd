@@ -55,9 +55,15 @@ func _process(delta):
 		# Interpolate between the circle and the triangle
 		current_shape = interpolate_to_circle(current_shape, target_shape, morph_progress)
 
-func morph_to_circle(morph_progress: int):
-	var target_shape = generate_circle_points(circle_sides, radius)
-	current_shape = interpolate_to_circle(current_shape, target_shape, morph_progress)
+func morph_to_circle(progress: float):
+	if morphing:
+		current_shape = target_shape
+		polygon = target_shape
+		shape_changed.emit(polygon)
+	var final_shape = generate_circle_points(circle_sides, radius)
+	target_shape = interpolate_to_circle(current_shape, final_shape, progress)
+	morph_progress = 0.0
+	morphing = true
 
 func interpolate_shapes(shape1: Array, shape2: Array, t: float) -> Array:
 	var result = []
