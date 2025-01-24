@@ -3,15 +3,16 @@ extends RigidBody2D
 @onready var enemy_shape = $EnemyShape
 @export var speed = 200
 
-var health: int = 100 : set = _on_health_changed
+var health: float = 100 : set = _on_health_changed
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		health -= 10
+		health -= 5
 
 func _on_health_changed(value):
-	enemy_shape.morph_to_circle(value / 100)
+	var progression = 1 - (value / 100)
+	enemy_shape.morph_to_circle(progression)
 	health = max(value, 0)
 
 func _set_global_position(position: Vector2) -> void:
