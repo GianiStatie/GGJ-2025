@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	var direction = Vector2.LEFT
-	if body.global_position.x < $Area2D.global_position.x:
-		direction = Vector2.RIGHT
+	var direction = Vector2.RIGHT
+	if body.velocity.x < 0:
+		direction = Vector2.LEFT
 	move_other_map.emit(self, direction)

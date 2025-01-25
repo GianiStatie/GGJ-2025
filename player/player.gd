@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 var scene = load("res://menu/end.tscn")
 
-
 var speed = 70
 var aim_range=15
 var max_health: float = 100

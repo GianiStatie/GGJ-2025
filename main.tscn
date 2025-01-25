@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgfydyw0tf6cp"]
+[gd_scene load_steps=6 format=3 uid="uid://bwxljiqer0pvs"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6ppmv"]
-[ext_resource type="PackedScene" uid="uid://byvxwiqnbvva7" path="res://map/map.tscn" id="2_ng5he"]
-[ext_resource type="PackedScene" uid="uid://dhtekd5kgedpy" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
+[ext_resource type="PackedScene" uid="uid://b780a8c64ruei" path="res://map/map.tscn" id="2_ng5he"]
+[ext_resource type="PackedScene" uid="uid://bt50jqjhjvoy4" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
 [ext_resource type="PackedScene" uid="uid://blvhwsfu73wla" path="res://player/player.tscn" id="3_sit2e"]
 [ext_resource type="PackedScene" uid="uid://6q36qf7ayv3b" path="res://enemies/spawner.tscn" id="4_dcpxf"]
 
@@ -46,9 +46,9 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-text = "Spawned: "
+text = "Nuke Timer: "
 
-[node name="SpawnedCount" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
+[node name="NukeTimer" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
