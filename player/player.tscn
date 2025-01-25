@@ -41,8 +41,6 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 128
 collision_mask = 128
 script = ExtResource("1_bs0pb")
-speed = 200
-aim_range = 20
 
 [node name="integrity" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 1)

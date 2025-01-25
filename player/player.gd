@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-@export var speed = 180
+var speed = 8000
 
 
-@export var aim_range=50
+var aim_range=25
 var dash_check=true
 var speed_bufer=speed
-func get_input():
+func get_input(delta):
 	#var input_direction = Input.get_vector("left", "right", "up", "down")
 	var input_direction = Input.get_vector("a", "d", "w", "s")
 	if !dash_check:
@@ -15,7 +15,7 @@ func get_input():
 		dash_check=false
 		$dash_timer.start(0)
 		speed_bufer=speed*40
-	velocity = input_direction * speed_bufer
+	velocity = input_direction * speed_bufer *delta
 	if Input.is_action_just_pressed("mouse_l_click") and self.global_position.distance_to(get_global_mouse_position()) >aim_range:
 		get_tree().get_nodes_in_group("pc_attack_tracker")[0].shoot(1,get_global_mouse_position(),$aim.global_position)
 
@@ -23,7 +23,8 @@ func get_input():
 #	print (event)
 	
 func _physics_process(delta):
-	get_input()
+	get_input(delta)
+	
 	#print(dash_check)
 	move_and_slide()
 	var mouse_pos_x=(self.global_position.x + aim_range * cos(self.get_angle_to(get_global_mouse_position())))
