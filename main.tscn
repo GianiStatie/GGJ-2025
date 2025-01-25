@@ -12,7 +12,7 @@ script = ExtResource("1_6ppmv")
 [node name="Map" parent="." instance=ExtResource("1_7uvnq")]
 
 [node name="Map2" parent="." instance=ExtResource("1_7uvnq")]
-position = Vector2(1470, 0)
+position = Vector2(1472, 0)
 
 [node name="Node" parent="." instance=ExtResource("2_pkjkf")]
 
