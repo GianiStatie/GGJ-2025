@@ -102,13 +102,13 @@ func _process(delta: float) -> void:
 		50:
 			speed+=20
 			GameState.kill_count+=1
-		55:
+		60:
 			attack_spee-=0.2
 			GameState.kill_count+=1
-		70:
+		80:
 			speed+=10
 			GameState.kill_count+=1
-		80:
+		90:
 			damage_modifier+=20
 			bullet_count+=1
 			GameState.kill_count+=1
