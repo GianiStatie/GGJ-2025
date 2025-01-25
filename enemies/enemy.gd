@@ -3,7 +3,7 @@ extends RigidBody2D
 @export var speed = 50
 @onready var animation_player = $AnimationPlayer
 
-var max_health: float = 100
+var max_health: float = 100 : set = _on_max_health_changed
 var health: float = max_health : set = _on_health_changed
 var damage: float = 10
 var isPlayerCollision = false
@@ -12,6 +12,9 @@ var bounceCount = 1
 
 signal player_health_perc_changed(perc)
 
+func _on_max_health_changed(value):
+	max_health = value
+	health = value
 
 func _on_health_changed(value):
 	var new_health = max(value, 0)
@@ -19,9 +22,10 @@ func _on_health_changed(value):
 		$PentagramBubble.visible = true
 	if new_health != health:
 		var progression = value / max_health
-		player_health_perc_changed.emit(progression)
+		if progression < 1:
+			player_health_perc_changed.emit(progression)
+			animation_player.play("Damaged")
 		health = new_health
-		animation_player.play("Damaged")
 	if health <= 0:
 		queue_free()
 

@@ -60,11 +60,11 @@ func _set_difficulty(enemy: Node2D) -> void:
 	var currentTime = Time.get_ticks_msec()
 	var elapsedSeconds = (currentTime - startTime) / 1000
 	
+	# every difficultyJumpSeconds increase difficulty by 10%
 	var difficultyMultiplier = floor(elapsedSeconds / difficultyJumpSeconds) * 0.1 + 1
+	# every difficultySpikeSeconds add 50% difficulty for difficultyJumpSeconds
 	if elapsedSeconds >= difficultySpikeSeconds && elapsedSeconds % difficultySpikeSeconds < difficultyJumpSeconds:
 		difficultyMultiplier = difficultyMultiplier * 1.5
-	
-	print("Difficulty multiplier: " + str(difficultyMultiplier))
 	
 	enemy.max_health = enemy.max_health * difficultyMultiplier
 	enemy.damage = enemy.damage * difficultyMultiplier
