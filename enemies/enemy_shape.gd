@@ -5,7 +5,7 @@ var circle_sides: int = 24
 # Radius of the circle
 var radius: float = 16
 # Duration of the transition
-var morph_duration: float = 2.0
+var morph_duration: float = 0.2
 
 # Internal variables
 var current_shape: Array = []

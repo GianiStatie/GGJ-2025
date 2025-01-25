@@ -1,8 +1,9 @@
 extends RigidBody2D
 
 @export var speed = 50
+@onready var animation_player = $AnimationPlayer
 
-var max_health: float = 30
+var max_health: float = 100
 var health: float = max_health : set = _on_health_changed
 var damage: float = 10
 var isPlayerCollision = false
@@ -20,6 +21,7 @@ func _on_health_changed(value):
 		var progression = value / max_health
 		player_health_perc_changed.emit(progression)
 		health = new_health
+		animation_player.play("Damaged")
 	if health <= 0:
 		queue_free()
 
