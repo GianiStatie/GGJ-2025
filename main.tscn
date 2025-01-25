@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwxljiqer0pvs"]
+[gd_scene load_steps=6 format=3 uid="uid://cdgfo27okglnw"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6ppmv"]
-[ext_resource type="PackedScene" uid="uid://b780a8c64ruei" path="res://map/map.tscn" id="1_7uvnq"]
-[ext_resource type="PackedScene" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
+[ext_resource type="PackedScene" uid="uid://bxm5nx1iycbpu" path="res://map/tile_map_layer.tscn" id="1_7uvnq"]
+[ext_resource type="PackedScene" uid="uid://dhtekd5kgedpy" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
 [ext_resource type="PackedScene" uid="uid://blvhwsfu73wla" path="res://player/player.tscn" id="3_sit2e"]
 [ext_resource type="PackedScene" uid="uid://6q36qf7ayv3b" path="res://enemies/spawner.tscn" id="4_dcpxf"]
 
