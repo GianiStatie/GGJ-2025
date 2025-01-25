@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bwxljiqer0pvs"]
 
 [ext_resource type="PackedScene" uid="uid://b780a8c64ruei" path="res://map/map.tscn" id="1_7uvnq"]
-[ext_resource type="PackedScene" uid="uid://bt50jqjhjvoy4" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
+[ext_resource type="PackedScene" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
 [ext_resource type="PackedScene" uid="uid://blvhwsfu73wla" path="res://player/player.tscn" id="3_sit2e"]
 [ext_resource type="PackedScene" uid="uid://6q36qf7ayv3b" path="res://enemies/spawner.tscn" id="4_dcpxf"]
 

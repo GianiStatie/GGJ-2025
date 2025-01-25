@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://effects/pentagram_bubble.gd" id="1_gb2tf"]
 [ext_resource type="Script" path="res://enemies/enemy_shape.gd" id="3_1onsc"]
-[ext_resource type="Texture2D" uid="uid://cuvhrh8lndffd" path="res://icon.svg" id="4_xoq8m"]
+[ext_resource type="Texture2D" uid="uid://b2fm6uf2wmfat" path="res://icon.svg" id="4_xoq8m"]
 [ext_resource type="Script" path="res://effects/pentagram_shape_outline.gd" id="5_v8vln"]
 [ext_resource type="Script" path="res://effects/pentagrm_collision_shape.gd" id="6_pyyv4"]
 

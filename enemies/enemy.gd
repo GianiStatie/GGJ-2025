@@ -6,6 +6,7 @@ var max_health: float = 30
 var health: float = max_health : set = _on_health_changed
 var damage: float = 10
 var isPlayerCollision = false
+var effect = preload("res://effects/bubble_dead_particles.tscn")
 
 signal player_health_perc_changed(perc)
 
@@ -44,3 +45,6 @@ func _on_player_collision() -> void:
 
 func _on_bounce_timer_timeout() -> void:
 	isPlayerCollision = false
+	
+func _on_tree_exiting() -> void:
+	Utils.instance_scene_on_main(effect, global_position)
