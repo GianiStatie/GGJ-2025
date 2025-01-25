@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+var damage = 34
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,5 +26,7 @@ func _on_screen_check_screen_exited() -> void:
 func _on_colistion_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
 		self.visible=false
-		queue_free()
+	if body.is_in_group("enemy_group"):
+		body.health -= damage
+	queue_free()
 	pass # Replace with function body.

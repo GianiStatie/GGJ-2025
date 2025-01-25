@@ -1,8 +1,8 @@
 extends RigidBody2D
 
-@export var speed = 200
+@export var speed = 50
 
-var max_health: float = 100
+var max_health: float = 30
 var health: float = max_health : set = _on_health_changed
 
 signal player_health_perc_changed(perc)
@@ -17,6 +17,8 @@ func _on_health_changed(value):
 		var progression = value / max_health
 		player_health_perc_changed.emit(progression)
 		health = new_health
+	if health <= 0:
+		queue_free()
 
 func _set_global_position(position: Vector2) -> void:
 	global_position = position

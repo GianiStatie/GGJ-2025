@@ -1,27 +1,18 @@
 extends Node
 
-@export var enemy_scene: PackedScene
+var enemy_scene = preload("res://enemies/enemy.tscn")
 var enemies: Array
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func _on_player_position_changed() -> void:
-	var globalPlayerPosition = get_node("player").global_position
-	
+func _on_enemy_move_timer_timeout() -> void:
+	var playerPosition = get_tree().get_nodes_in_group("player_group")[0].global_position
 	for enemy in enemies:
-		enemy.follow_target(globalPlayerPosition)
+		if is_instance_valid(enemy):
+			enemy._follow_target(playerPosition)
 
 # spawns enemies at random locations and makes them move towards the player
 func _on_enemy_timer_timeout() -> void:
 	var globalEnemyPosition = _get_enemy_spawn_position()
-	var globalPlayerPosition = get_node("player").global_position
+	var globalPlayerPosition = get_tree().get_nodes_in_group("player_group")[0].global_position
 	
 	var enemy : Node2D = enemy_scene.instantiate()
 	enemy._set_global_position(globalEnemyPosition)

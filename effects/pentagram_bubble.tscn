@@ -1,31 +1,43 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0gi0k6jkf05m"]
+[gd_scene load_steps=8 format=3 uid="uid://d0gi0k6jkf05m"]
 
 [ext_resource type="Script" path="res://effects/pentagram_bubble.gd" id="1_gb2tf"]
-[ext_resource type="Shader" path="res://effects/bubble.gdshader" id="2_tm7y0"]
 [ext_resource type="Script" path="res://enemies/enemy_shape.gd" id="3_1onsc"]
 [ext_resource type="Texture2D" uid="uid://cuvhrh8lndffd" path="res://icon.svg" id="4_xoq8m"]
 [ext_resource type="Script" path="res://effects/pentagram_shape_outline.gd" id="5_v8vln"]
 [ext_resource type="Script" path="res://effects/pentagrm_collision_shape.gd" id="6_pyyv4"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_2e7pm"]
-frequency = 0.0125
+[sub_resource type="Shader" id="Shader_k8d10"]
+code = "shader_type canvas_item;
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dvm3p"]
-noise = SubResource("FastNoiseLite_2e7pm")
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear;
+uniform sampler2D NOISE_TEXTURE: repeat_enable;
+uniform float strength: hint_range(0.0, 5, 0.1) = 1.0;
+uniform float uv_scaling: hint_range (0.0, 1.0, 0.05) = 1.0;
+uniform vec2 movement_direction = vec2(1, 0);
+uniform float movement_speed: hint_range (0.0, 0.5, 0.01) = 0.1;
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5d1tk"]
-shader = ExtResource("2_tm7y0")
-shader_parameter/refraction_stretch = Vector2(1, 1)
-shader_parameter/refraction_strength = 0.02
-shader_parameter/water_tint = Color(0.2, 0.6, 1, 0.1)
-shader_parameter/speed = 0.1
-shader_parameter/refraction_map = SubResource("NoiseTexture2D_dvm3p")
+void fragment() {
+	vec2 uv = SCREEN_UV;
+	vec4 screen_texture = texture(SCREEN_TEXTURE, uv);
+	vec2 movement_factor = movement_direction * movement_speed * TIME;
+	float noise_value = texture(NOISE_TEXTURE, uv*uv_scaling + movement_factor).r - 0.5;
+	uv += noise_value * SCREEN_PIXEL_SIZE * strength;
+	COLOR = texture(SCREEN_TEXTURE, uv);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_byouk"]
+resource_local_to_scene = true
+shader = SubResource("Shader_k8d10")
+shader_parameter/strength = 1.0
+shader_parameter/uv_scaling = 1.0
+shader_parameter/movement_direction = Vector2(1, 0)
+shader_parameter/movement_speed = 0.1
 
 [node name="PentagramBubble" type="Node2D"]
 script = ExtResource("1_gb2tf")
 
 [node name="Shape" type="Polygon2D" parent="."]
-material = SubResource("ShaderMaterial_5d1tk")
+material = SubResource("ShaderMaterial_byouk")
 rotation = 1.0472
 polygon = PackedVector2Array(13.8564, 8, 13.8564, 8, 13.8564, 8, 13.8564, 8, 13.8564, 8, 13.8564, 8, 13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, 0, -16, 0, -16, 0, -16, 0, -16, 9.79718e-16, -16, 0, -16, 0, -16, 0, -16, 0, -16, 13.8564, 8)
 script = ExtResource("3_1onsc")
@@ -37,6 +49,7 @@ scale = Vector2(0.0234375, 0.0234375)
 texture = ExtResource("4_xoq8m")
 
 [node name="ShapeOutline" type="Line2D" parent="."]
+visible = false
 rotation = 1.0472
 points = PackedVector2Array(-13.9282, 8.12436, 0.0717959, -16.1244, 13.8564, 8)
 closed = true
@@ -47,6 +60,7 @@ end_cap_mode = 2
 script = ExtResource("5_v8vln")
 
 [node name="ShapeOutline2" type="Line2D" parent="."]
+visible = false
 points = PackedVector2Array(-13.9282, 8.12436, 0.0717959, -16.1244, 13.8564, 8)
 closed = true
 width = 1.0
@@ -56,6 +70,7 @@ end_cap_mode = 2
 script = ExtResource("5_v8vln")
 
 [node name="ShapeCollisionShape" type="CollisionPolygon2D" parent="."]
+visible = false
 disabled = true
 script = ExtResource("6_pyyv4")
 
