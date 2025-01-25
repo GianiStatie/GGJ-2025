@@ -70,7 +70,7 @@ func _set_difficulty(enemy: Node2D) -> void:
 	enemy.damage = enemy.damage * difficultyMultiplier
 	
 	var enemySpawnPenalty = floor(elapsedSeconds / enemySpawnTimerSeconds) * 0.3
-	var newSpawnTime = max($EnemyTimer.wait_time - enemySpawnPenalty, 0.6)
+	var newSpawnTime = max($EnemyTimer.wait_time - enemySpawnPenalty, 0.3)
 	$EnemyTimer.wait_time = newSpawnTime
 		
 func _get_enemy_spawn_position() -> Vector2:

@@ -71,7 +71,7 @@ func _on_collision_body_entered(body: Node2D) -> void:
 		health -= body.damage
 		body._on_player_collision()
 
-var level_rewards = [[10, false], [15, false], [20, false], [25, false], [30, false], [35, false], [40, false], [45, false], [50, false], [60, false], [80, false], [90, false], ]
+var level_rewards = [[5, false], [8, false], [15, false], [25, false], [40, false], [55, false], [70, false], [85, false], [100, false], [120, false], [150, false], [200, false], ]
 
 func _process(delta: float) -> void:
 	var kill_tracker=GameState.kill_count
