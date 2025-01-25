@@ -2,11 +2,11 @@
 extends Polygon2D
 
 # Number of sides for the circle (default is high for smoothness)
-@export var circle_sides: int = 24
+var circle_sides: int = 24
 # Radius of the circle
-@export var radius: float = 50.0
+var radius: float = 16
 # Duration of the transition
-@export var morph_duration: float = 2.0
+var morph_duration: float = 2.0
 
 # Internal variables
 var current_shape: Array = []

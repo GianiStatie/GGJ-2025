@@ -1,19 +1,135 @@
-[gd_scene load_steps=4 format=3 uid="uid://wsvpcb8bmere"]
+[gd_scene load_steps=20 format=3 uid="uid://wsvpcb8bmere"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_chkg3"]
+[ext_resource type="Texture2D" uid="uid://cuvhrh8lndffd" path="res://icon.svg" id="2_0t1lc"]
 [ext_resource type="Script" path="res://enemies/enemy_shape.gd" id="2_b7ssp"]
+[ext_resource type="Texture2D" uid="uid://cfppeqv7didkn" path="res://assets/dungeon/0x72_DungeonTilesetII_v1.7.png" id="2_tvphr"]
+[ext_resource type="Shader" path="res://enemies/enemy.gdshader" id="2_u77qc"]
 [ext_resource type="Script" path="res://enemies/enemy_collision_shape.gd" id="3_lhgys"]
+[ext_resource type="Script" path="res://enemies/enemy_shape_outline.gd" id="5_l73hh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yig8"]
+atlas = ExtResource("2_tvphr")
+region = Rect2(368, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grj6o"]
+atlas = ExtResource("2_tvphr")
+region = Rect2(384, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdlr6"]
+atlas = ExtResource("2_tvphr")
+region = Rect2(400, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37y71"]
+atlas = ExtResource("2_tvphr")
+region = Rect2(416, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bch4e"]
+atlas = ExtResource("2_tvphr")
+region = Rect2(432, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s68iu"]
+atlas = ExtResource("2_tvphr")
+region = Rect2(448, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxt30"]
+atlas = ExtResource("2_tvphr")
+region = Rect2(464, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwky1"]
+atlas = ExtResource("2_tvphr")
+region = Rect2(480, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a4lcu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yig8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grj6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdlr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37y71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bch4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s68iu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxt30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwky1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2e7pm"]
+frequency = 0.0125
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dvm3p"]
+noise = SubResource("FastNoiseLite_2e7pm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5d1tk"]
+shader = ExtResource("2_u77qc")
+shader_parameter/refraction_stretch = Vector2(1, 1)
+shader_parameter/refraction_strength = 0.02
+shader_parameter/water_tint = Color(0.2, 0.6, 1, 0.1)
+shader_parameter/speed = 0.1
+shader_parameter/refraction_map = SubResource("NoiseTexture2D_dvm3p")
 
 [node name="Enemy" type="RigidBody2D"]
 gravity_scale = 0.0
 script = ExtResource("1_chkg3")
 
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.835902, 1)
+sprite_frames = SubResource("SpriteFrames_a4lcu")
+autoplay = "default"
+frame_progress = 0.907689
+
 [node name="EnemyShape" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(43.3013, 25, 43.3013, 25, 43.3013, 25, 43.3013, 25, 43.3013, 25, 43.3013, 25, 43.3013, 25, -43.3013, 25, -43.3013, 25, -43.3013, 25, -43.3013, 25, -43.3013, 25, -43.3013, 25, -43.3013, 25, 0, -50, 0, -50, 0, -50, 0, -50, 3.06162e-15, -50, 0, -50, 0, -50, 0, -50, 0, -50, 43.3013, 25)
+material = SubResource("ShaderMaterial_5d1tk")
+rotation = 1.0472
+polygon = PackedVector2Array(13.8564, 8, 13.8564, 8, 13.8564, 8, 13.8564, 8, 13.8564, 8, 13.8564, 8, 13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, 0, -16, 0, -16, 0, -16, 0, -16, 9.79718e-16, -16, 0, -16, 0, -16, 0, -16, 0, -16, 13.8564, 8)
 script = ExtResource("2_b7ssp")
-morph_duration = 0.3
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(100, 100, 100, 0.715)
+position = Vector2(-4, -5)
+scale = Vector2(0.0234375, 0.0234375)
+texture = ExtResource("2_0t1lc")
+
+[node name="EnemyShapeOutline" type="Line2D" parent="."]
+rotation = 1.0472
+points = PackedVector2Array(-13.9282, 8.12436, 0.0717959, -16.1244, 13.8564, 8)
+closed = true
+width = 1.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("5_l73hh")
+
+[node name="EnemyShapeOutline2" type="Line2D" parent="."]
+points = PackedVector2Array(-13.9282, 8.12436, 0.0717959, -16.1244, 13.8564, 8)
+closed = true
+width = 1.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("5_l73hh")
 
 [node name="EnemyCollisionShape" type="CollisionPolygon2D" parent="."]
 script = ExtResource("3_lhgys")
 
 [connection signal="shape_changed" from="EnemyShape" to="EnemyCollisionShape" method="_on_enemy_shape_shape_changed"]
+[connection signal="shape_changed" from="EnemyShape" to="EnemyShapeOutline" method="_on_enemy_shape_shape_changed"]
+[connection signal="shape_changed" from="EnemyShape" to="EnemyShapeOutline2" method="_on_enemy_shape_shape_changed"]
