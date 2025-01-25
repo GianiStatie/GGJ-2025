@@ -42,7 +42,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -84,7 +84,8 @@ script = ExtResource("1_bs0pb")
 [node name="CharacterSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_rhops")
-animation = &"Run"
+animation = &"Idle"
+frame_progress = 0.238033
 
 [node name="aim" type="Sprite2D" parent="."]
 scale = Vector2(0.75, 0.75)
