@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdgfo27okglnw"]
+[gd_scene load_steps=6 format=3 uid="uid://bwxljiqer0pvs"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6ppmv"]
-[ext_resource type="PackedScene" uid="uid://bxm5nx1iycbpu" path="res://map/tile_map_layer.tscn" id="1_7uvnq"]
-[ext_resource type="PackedScene" uid="uid://dhtekd5kgedpy" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
+[ext_resource type="PackedScene" uid="uid://b780a8c64ruei" path="res://map/map.tscn" id="1_7uvnq"]
+[ext_resource type="PackedScene" uid="uid://bt50jqjhjvoy4" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
 [ext_resource type="PackedScene" uid="uid://blvhwsfu73wla" path="res://player/player.tscn" id="3_sit2e"]
 [ext_resource type="PackedScene" uid="uid://6q36qf7ayv3b" path="res://enemies/spawner.tscn" id="4_dcpxf"]
 
@@ -10,25 +10,50 @@
 script = ExtResource("1_6ppmv")
 
 [node name="Map" parent="." instance=ExtResource("1_7uvnq")]
-position = Vector2(98, 161)
+
+[node name="Map2" parent="." instance=ExtResource("1_7uvnq")]
+position = Vector2(1470, 0)
 
 [node name="Node" parent="." instance=ExtResource("2_pkjkf")]
 
 [node name="player" parent="." instance=ExtResource("3_sit2e")]
-position = Vector2(344, -28)
+position = Vector2(1326, -11)
 
 [node name="Spawner" parent="." instance=ExtResource("4_dcpxf")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "You Killed: "
+
+[node name="KillCount" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_horizontal = 4
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Spawned: "
+
+[node name="SpawnedCount" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="move_other_map" from="Map" to="." method="_on_map_move_other_map"]
+[connection signal="move_other_map" from="Map2" to="." method="_on_map_move_other_map"]
