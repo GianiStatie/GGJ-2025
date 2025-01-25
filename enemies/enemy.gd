@@ -4,6 +4,8 @@ extends RigidBody2D
 
 var max_health: float = 30
 var health: float = max_health : set = _on_health_changed
+var damage: float = 10
+var isPlayerCollision = false
 
 signal player_health_perc_changed(perc)
 
@@ -24,6 +26,21 @@ func _set_global_position(position: Vector2) -> void:
 	global_position = position
 	
 func _follow_target(target_position: Vector2) -> void:
+	if isPlayerCollision:
+		return
+		
 	var direction = global_position.direction_to(target_position)
 	look_at(direction)
 	linear_velocity = speed * direction
+
+func _on_player_collision() -> void:
+	isPlayerCollision  = true
+	var currentDirection = linear_velocity / speed
+	var bounceDirection = currentDirection * -1
+	look_at(bounceDirection)
+	linear_velocity = bounceDirection * speed
+	var timer = get_node("BounceTimer")
+	timer.start()
+
+func _on_bounce_timer_timeout() -> void:
+	isPlayerCollision = false

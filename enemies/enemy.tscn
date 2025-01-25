@@ -144,6 +144,10 @@ script = ExtResource("5_l73hh")
 disabled = true
 script = ExtResource("3_lhgys")
 
+[node name="BounceTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="player_health_perc_changed" from="." to="PentagramBubble" method="_on_enemy_player_health_perc_changed"]
 [connection signal="shape_changed" from="PentagramBubble/EnemyShape" to="PentagramBubble/EnemyShapeOutline" method="_on_enemy_shape_shape_changed"]
 [connection signal="shape_changed" from="PentagramBubble/EnemyShape" to="PentagramBubble/EnemyCollisionShape" method="_on_enemy_shape_shape_changed"]
+[connection signal="timeout" from="BounceTimer" to="." method="_on_bounce_timer_timeout"]
