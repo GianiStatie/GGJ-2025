@@ -23,6 +23,13 @@ func _on_enemy_timer_timeout() -> void:
 	var globalPlayerPosition = player.global_position	
 	var globalEnemyPosition = _get_enemy_spawn_position()
 	
+	$RayCast2D.global_position = globalEnemyPosition
+	$RayCast2D.target_position =  globalPlayerPosition - globalEnemyPosition
+	print($RayCast2D.get_collider())
+	
+	if $RayCast2D.get_collider() != player:
+		return
+	
 	var enemy : Node2D = enemy_scene.instantiate()
 	enemy._set_global_position(globalEnemyPosition)
 	enemy._follow_target(globalPlayerPosition)

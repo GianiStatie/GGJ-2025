@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://b780a8c64ruei"]
 
-[ext_resource type="Texture2D" uid="uid://gyop64lgvv3r" path="res://assets/dungeon/atlas_walls_low-16x16.png" id="1_7mrvn"]
-[ext_resource type="Texture2D" uid="uid://3mkxrkocold1" path="res://assets/dungeon/atlas_floor-16x16.png" id="1_akcey"]
+[ext_resource type="Texture2D" uid="uid://dhtmrjkrmc1o1" path="res://assets/dungeon/atlas_walls_low-16x16.png" id="1_7mrvn"]
+[ext_resource type="Texture2D" uid="uid://dw2nuk8ux2m88" path="res://assets/dungeon/atlas_floor-16x16.png" id="1_akcey"]
 [ext_resource type="Script" path="res://map/map.gd" id="1_l8crv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qr0s7"]

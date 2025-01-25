@@ -39,7 +39,7 @@ func _on_player_collision() -> void:
 	var currentDirection = linear_velocity / speed
 	var bounceDirection = currentDirection * -1
 	look_at(bounceDirection)
-	linear_velocity = bounceDirection * speed
+	linear_velocity = bounceDirection * speed * 2
 	var timer = get_node("BounceTimer")
 	timer.start()
 
