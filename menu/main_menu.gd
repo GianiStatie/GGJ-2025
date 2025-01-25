@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 
 
 func _on_start_pressed() -> void:
-	var instance = scene.instantiate()
-	add_child(instance)
+	get_tree().change_scene_to_packed(scene)
+	#var instance = scene.instantiate()
+	#add_child(instance)
 	pass # Replace with function body.
