@@ -13,10 +13,13 @@ func _process(delta: float) -> void:
 	%SpawnedCount.text = str(GameState.enemy_spawns)
 
 func _on_map_move_other_map(not_this_map: Variant, direction: Vector2) -> void:
-	print(direction)
-	var new_position = Vector2(not_this_map.size.x, 0) * direction + not_this_map.position
+	var position_shift = Vector2(not_this_map.size.x, 0) * direction
 	for map in maps:
 		if map != not_this_map:
-			map.position = new_position
+			print(Vector2(not_this_map.size.x, 0) * direction)
+			print("not this map: ", not_this_map.name, " ", not_this_map.position)
+			print("this map: ", map.name, " ", map.position, " ", not_this_map.position + position_shift)
+			print('###')
+			map.position = not_this_map.position + position_shift
 			break
 	
