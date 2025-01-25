@@ -1,11 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://1oa8jo7sa0yd"]
+[gd_scene load_steps=8 format=3 uid="uid://1oa8jo7sa0yd"]
 
 [ext_resource type="Script" path="res://player/attacks/attack_1.gd" id="1_egapq"]
 [ext_resource type="Texture2D" uid="uid://bs52bomw3ktu2" path="res://icon.svg" id="1_m3e3c"]
+[ext_resource type="Texture2D" uid="uid://dsoi88ju33wrm" path="res://assets/dungeon/0x72_DungeonTilesetII_v1.7.png" id="3_5hhuv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfec7"]
+size = Vector2(8.54056, 8.71654)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eax0x"]
+size = Vector2(10.4963, 10.4356)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kwlm"]
+atlas = ExtResource("3_5hhuv")
+region = Rect2(288, 312, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7uqyy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kwlm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="attack1" type="RigidBody2D"]
 collision_layer = 0
@@ -20,18 +38,27 @@ collision_layer = 0
 collision_mask = 132
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="colistion"]
+position = Vector2(0, 2.19159)
 scale = Vector2(1.84, 1.76)
 shape = SubResource("RectangleShape2D_wfec7")
 
 [node name="integrity" type="CollisionShape2D" parent="."]
+position = Vector2(8.9407e-08, 2.5)
 scale = Vector2(1.14326, 1.05408)
 shape = SubResource("RectangleShape2D_eax0x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.258824, 0.238095)
 texture = ExtResource("1_m3e3c")
 
 [node name="screen_check" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.5, 2.5)
+scale = Vector2(0.55, 0.45)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -3)
+sprite_frames = SubResource("SpriteFrames_7uqyy")
 
 [connection signal="body_entered" from="colistion" to="." method="_on_colistion_body_entered"]
 [connection signal="screen_exited" from="screen_check" to="." method="_on_screen_check_screen_exited"]

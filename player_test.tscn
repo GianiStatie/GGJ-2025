@@ -13,3 +13,5 @@ tile_map_data = PackedByteArray("AAD5//r/AAAAAAIAAAD5//v/AAAAAAIAAAD5//3/AAAAAAI
 [node name="Node" parent="." instance=ExtResource("1_u5xf1")]
 
 [node name="player" parent="." instance=ExtResource("2_x4hl1")]
+speed = 180
+aim_range = 30
