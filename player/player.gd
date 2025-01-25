@@ -6,13 +6,16 @@ var max_health: float = 100
 var health: float = max_health : set = _on_health_changed
 var dash_check=true
 var speed_bufer=speed
+var is_dead = false
 
 func _on_health_changed(value):
 	health = max(value, 0)
 	if health <= 0:
-		queue_free()
+		is_dead = true
 
 func get_input(delta):
+	if is_dead:
+		return
 	#var input_direction = Input.get_vector("left", "right", "up", "down")
 	var input_direction = Input.get_vector("a", "d", "w", "s")
 	if !dash_check:
@@ -30,6 +33,8 @@ func get_input(delta):
 #	print (event)
 	
 func _physics_process(delta):
+	if is_dead:
+		return
 	get_input(delta)
 	
 	#print(dash_check)
@@ -37,7 +42,6 @@ func _physics_process(delta):
 	var mouse_pos_x=(self.global_position.x + aim_range * cos(self.get_angle_to(get_global_mouse_position())))
 	var mouse_pos_y=(self.global_position.y + aim_range * sin(self.get_angle_to(get_global_mouse_position())))
 	$aim.global_position=Vector2(mouse_pos_x , mouse_pos_y)
-
 
 
 func _on_dash_timer_timeout() -> void:

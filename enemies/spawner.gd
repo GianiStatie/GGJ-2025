@@ -4,15 +4,24 @@ var enemy_scene = preload("res://enemies/enemy.tscn")
 var enemies: Array
 
 func _on_enemy_move_timer_timeout() -> void:
-	var playerPosition = get_tree().get_nodes_in_group("player_group")[0].global_position
+	var player = get_tree().get_nodes_in_group("player_group")[0]
+	if player.is_dead:
+		return
+		
+	var playerPosition = player.global_position
 	for enemy in enemies:
 		if is_instance_valid(enemy):
 			enemy._follow_target(playerPosition)
 
 # spawns enemies at random locations and makes them move towards the player
 func _on_enemy_timer_timeout() -> void:
+	
+	var player = get_tree().get_nodes_in_group("player_group")[0]
+	if player.is_dead:
+		return
+	
+	var globalPlayerPosition = player.global_position	
 	var globalEnemyPosition = _get_enemy_spawn_position()
-	var globalPlayerPosition = get_tree().get_nodes_in_group("player_group")[0].global_position
 	
 	var enemy : Node2D = enemy_scene.instantiate()
 	enemy._set_global_position(globalEnemyPosition)
