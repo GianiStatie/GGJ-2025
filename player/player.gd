@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var scene = load("res://menu/end.tscn")
+
 var speed = 8000
 var aim_range=18
 var max_health: float = 100
@@ -12,6 +14,7 @@ func _on_health_changed(value):
 	health = max(value, 0)
 	if health <= 0:
 		is_dead = true
+		get_tree().change_scene_to_packed(scene)
 
 func get_input(delta):
 	if is_dead:
