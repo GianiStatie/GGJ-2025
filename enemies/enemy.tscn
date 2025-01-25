@@ -1,9 +1,9 @@
 [gd_scene load_steps=22 format=3 uid="uid://wsvpcb8bmere"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_chkg3"]
-[ext_resource type="Texture2D" uid="uid://cuvhrh8lndffd" path="res://icon.svg" id="2_0t1lc"]
+[ext_resource type="Texture2D" uid="uid://b2fm6uf2wmfat" path="res://icon.svg" id="2_0t1lc"]
 [ext_resource type="Script" path="res://enemies/enemy_shape.gd" id="2_b7ssp"]
-[ext_resource type="Texture2D" uid="uid://cfppeqv7didkn" path="res://assets/dungeon/0x72_DungeonTilesetII_v1.7.png" id="2_tvphr"]
+[ext_resource type="Texture2D" uid="uid://bdho1ync2u4xu" path="res://assets/dungeon/0x72_DungeonTilesetII_v1.7.png" id="2_tvphr"]
 [ext_resource type="Shader" path="res://enemies/enemy.gdshader" id="2_u77qc"]
 [ext_resource type="Script" path="res://effects/pentagram_bubble.gd" id="3_1eg8g"]
 [ext_resource type="Script" path="res://enemies/enemy_collision_shape.gd" id="3_lhgys"]
@@ -90,7 +90,9 @@ shader_parameter/water_tint = Color(0.2, 0.6, 1, 0.1)
 shader_parameter/speed = 0.1
 shader_parameter/refraction_map = SubResource("NoiseTexture2D_dvm3p")
 
-[node name="Enemy" type="RigidBody2D"]
+[node name="Enemy" type="RigidBody2D" groups=["enemy_group"]]
+collision_layer = 2
+collision_mask = 5
 gravity_scale = 0.0
 script = ExtResource("1_chkg3")
 
@@ -105,13 +107,12 @@ position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_drcl6")
 
 [node name="PentagramBubble" type="Node2D" parent="."]
-visible = false
 script = ExtResource("3_1eg8g")
 
 [node name="EnemyShape" type="Polygon2D" parent="PentagramBubble"]
 material = SubResource("ShaderMaterial_5d1tk")
 rotation = 1.0472
-polygon = PackedVector2Array(13.8564, 8, 13.8564, 8, 13.8564, 8, 13.8564, 8, 13.8564, 8, 13.8564, 8, 13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, 0, -16, 0, -16, 0, -16, 0, -16, 9.79718e-16, -16, 0, -16, 0, -16, 0, -16, 0, -16, 13.8564, 8)
+polygon = PackedVector2Array(13.8564, 8, 13.8564, 8, 13.8564, 8, 13.8564, 8, 13.8564, 8, 13.8564, 8, 13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, -13.8564, 8, 0, -16, 0, -16, 0, -16, 0, -16, 9.79685e-16, -16, 0, -16, 0, -16, 0, -16, 0, -16, 13.8564, 8)
 script = ExtResource("2_b7ssp")
 
 [node name="Icon" type="Sprite2D" parent="PentagramBubble"]
@@ -144,5 +145,5 @@ disabled = true
 script = ExtResource("3_lhgys")
 
 [connection signal="player_health_perc_changed" from="." to="PentagramBubble" method="_on_enemy_player_health_perc_changed"]
-[connection signal="shape_changed" from="PentagramBubble/EnemyShape" to="PentagramBubble/EnemyCollisionShape" method="_on_enemy_shape_shape_changed"]
 [connection signal="shape_changed" from="PentagramBubble/EnemyShape" to="PentagramBubble/EnemyShapeOutline" method="_on_enemy_shape_shape_changed"]
+[connection signal="shape_changed" from="PentagramBubble/EnemyShape" to="PentagramBubble/EnemyCollisionShape" method="_on_enemy_shape_shape_changed"]

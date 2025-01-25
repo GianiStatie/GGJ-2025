@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=4 uid="uid://bwxljiqer0pvs"]
+[gd_scene load_steps=5 format=4 uid="uid://bjplfrqbypetu"]
 
-[ext_resource type="PackedScene" uid="uid://bt50jqjhjvoy4" path="res://player/pc_attack_tracker.tscn" id="1_u5xf1"]
+[ext_resource type="PackedScene" path="res://player/pc_attack_tracker.tscn" id="1_u5xf1"]
+[ext_resource type="PackedScene" uid="uid://bcvroid3corsj" path="res://enemies/spawner.tscn" id="2_b1idc"]
 [ext_resource type="PackedScene" uid="uid://blvhwsfu73wla" path="res://player/player.tscn" id="2_x4hl1"]
 [ext_resource type="PackedScene" uid="uid://b780a8c64ruei" path="res://map/tile_map_layer.tscn" id="3_ducsp"]
 
@@ -13,3 +14,5 @@ tile_map_data = PackedByteArray("AAD5//r/AAAAAAIAAAD5//v/AAAAAAIAAAD5//3/AAAAAAI
 [node name="Node" parent="." instance=ExtResource("1_u5xf1")]
 
 [node name="player" parent="." instance=ExtResource("2_x4hl1")]
+
+[node name="Spawner" parent="." instance=ExtResource("2_b1idc")]
