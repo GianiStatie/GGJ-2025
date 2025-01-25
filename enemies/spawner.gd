@@ -6,6 +6,18 @@ var startTime = Time.get_ticks_msec()
 var difficultyJumpSeconds = 20
 var difficultySpikeSeconds = 60
 
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept") and GameState.can_nuke:
+		for child in get_children():
+			if child.is_in_group("enemy_group"):
+				child.health -= 100
+		GameState.can_nuke = false
+		$NukeTimer.start()
+
+func _process(delta: float) -> void:
+	GameState.nuke_time = snapped($NukeTimer.time_left, 0.01) 
+
 func _on_enemy_move_timer_timeout() -> void:
 	var player = get_tree().get_nodes_in_group("player_group")[0]
 	if player.is_dead:
@@ -81,3 +93,6 @@ func _get_enemy_spawn_position() -> Vector2:
 	var enemyPosition = Vector2(xPosition, yPosition)
 	var globalEnemyPosition = (get_viewport().get_screen_transform() * get_viewport().get_canvas_transform()).affine_inverse() * enemyPosition
 	return globalEnemyPosition
+
+func _on_nuke_timer_timeout() -> void:
+	GameState.can_nuke = true
