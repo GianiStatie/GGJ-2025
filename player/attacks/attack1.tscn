@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://1oa8jo7sa0yd"]
 
 [ext_resource type="Script" path="res://player/attacks/attack_1.gd" id="1_egapq"]
-[ext_resource type="Texture2D" uid="uid://6ak3yoyylnle" path="res://assets/bubbles/8x8-bubble.png" id="2_ui2l1"]
+[ext_resource type="Texture2D" uid="uid://bqeejs33ahhj7" path="res://assets/bubbles/8x8-bubble.png" id="2_ui2l1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfec7"]
 size = Vector2(8.54056, 8.71654)
