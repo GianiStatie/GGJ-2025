@@ -3,7 +3,7 @@ extends CharacterBody2D
 var scene = load("res://menu/end.tscn")
 
 var speed = 8000
-var aim_range=18
+var aim_range=15
 var max_health: float = 100
 var health: float = max_health : set = _on_health_changed
 var dash_check=true
@@ -31,7 +31,6 @@ func get_input(delta):
 	if Input.is_action_just_pressed("mouse_l_click") and self.global_position.distance_to(get_global_mouse_position()) >aim_range:
 		var start_pos = $aim/AimMarker.global_position
 		get_tree().get_nodes_in_group("pc_attack_tracker")[0].shoot(1,get_global_mouse_position(),start_pos)
-
 #func _unhandled_input(event):
 #	print (event)
 	
@@ -45,7 +44,15 @@ func _physics_process(delta):
 	var mouse_pos_x=(self.global_position.x + aim_range * cos(self.get_angle_to(get_global_mouse_position())))
 	var mouse_pos_y=(self.global_position.y + aim_range * sin(self.get_angle_to(get_global_mouse_position())))
 	$aim.global_position=Vector2(mouse_pos_x , mouse_pos_y)
-
+	
+	var mouse_direction = global_position.direction_to($aim.global_position)
+	$CharacterSprite.flip_h = mouse_direction.x < 0
+	
+	if velocity == Vector2.ZERO:
+		$CharacterSprite.play("Idle")
+	else:
+		$CharacterSprite.play("Run")
+		
 
 func _on_dash_timer_timeout() -> void:
 	dash_check=true
