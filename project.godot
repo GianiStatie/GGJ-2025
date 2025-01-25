@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Utils="*res://singletons/Utils.gd"
 GameState="*res://singletons/GameState.gd"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [display]
 
 window/stretch/mode="viewport"

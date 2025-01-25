@@ -13,10 +13,10 @@ func _process(delta: float) -> void:
 	pass
 
 
-func shoot(type,target,position):
+func shoot(type,target,position,damage_modifier):
 	var tmp_attack
 	if type ==1:
 		tmp_attack=bullet1.duplicate()
 		$attack_tracker.add_child(tmp_attack)
 		tmp_attack.global_position=position
-		tmp_attack.trigger(target+Vector2(randi_range(-30,30),randi_range(-30,30)))
+		tmp_attack.trigger(target+Vector2(randi_range(-30,30),randi_range(-30,30)),damage_modifier)
