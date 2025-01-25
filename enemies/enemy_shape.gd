@@ -1,4 +1,3 @@
-@tool
 extends Polygon2D
 
 # Number of sides for the circle (default is high for smoothness)
