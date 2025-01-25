@@ -1,17 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwxljiqer0pvs"]
+[gd_scene load_steps=6 format=3 uid="uid://cgfydyw0tf6cp"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6ppmv"]
-[ext_resource type="PackedScene" uid="uid://b780a8c64ruei" path="res://map/map.tscn" id="1_7uvnq"]
-[ext_resource type="PackedScene" uid="uid://bt50jqjhjvoy4" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
+[ext_resource type="PackedScene" uid="uid://byvxwiqnbvva7" path="res://map/map.tscn" id="2_ng5he"]
+[ext_resource type="PackedScene" uid="uid://dhtekd5kgedpy" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
 [ext_resource type="PackedScene" uid="uid://blvhwsfu73wla" path="res://player/player.tscn" id="3_sit2e"]
 [ext_resource type="PackedScene" uid="uid://6q36qf7ayv3b" path="res://enemies/spawner.tscn" id="4_dcpxf"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_6ppmv")
 
-[node name="Map" parent="." instance=ExtResource("1_7uvnq")]
+[node name="Map" parent="." instance=ExtResource("2_ng5he")]
 
-[node name="Map2" parent="." instance=ExtResource("1_7uvnq")]
+[node name="Map2" parent="." instance=ExtResource("2_ng5he")]
 position = Vector2(1472, 0)
 
 [node name="Node" parent="." instance=ExtResource("2_pkjkf")]
