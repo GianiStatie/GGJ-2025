@@ -10,7 +10,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	%KillCount.text = str(GameState.kill_count)
-	%SpawnedCount.text = str(GameState.enemy_spawns)
+	if GameState.can_nuke:
+		%NukeTimer.text = "PRESS SPACE TO NUKE"
+	else:
+		%NukeTimer.text = "%s seconds"%[GameState.nuke_time]
 
 func _on_map_move_other_map(not_this_map: Variant, direction: Vector2) -> void:
 	var position_shift = Vector2(not_this_map.size.x, 0) * direction

@@ -12,9 +12,6 @@ var bounceCount = 1
 
 signal player_health_perc_changed(perc)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		health -= 10
 
 func _on_health_changed(value):
 	var new_health = max(value, 0)
