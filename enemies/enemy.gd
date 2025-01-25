@@ -1,6 +1,5 @@
 extends RigidBody2D
 
-@onready var enemy_shape = $EnemyShape
 @export var speed = 200
 
 var max_health: float = 100
