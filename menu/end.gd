@@ -8,6 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var instance = scene.instantiate()
-	add_child(instance)
+	get_tree().change_scene_to_packed(scene)
+	#var instance = scene.instantiate()
+	#add_child(instance)
 	pass
