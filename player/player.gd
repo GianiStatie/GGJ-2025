@@ -13,6 +13,7 @@ var can_shot=true
 var damage_modifier=0
 var attack_spee=0.8
 var bullet_count=1
+
 func _on_health_changed(value):
 	health = max(value, 0)
 	if health <= 0:
@@ -70,48 +71,49 @@ func _on_collision_body_entered(body: Node2D) -> void:
 		health -= body.damage
 		body._on_player_collision()
 
+var level_rewards = [[10, false], [15, false], [20, false], [25, false], [30, false], [35, false], [40, false], [45, false], [50, false], [60, false], [80, false], [90, false], ]
 
 func _process(delta: float) -> void:
 	var kill_tracker=GameState.kill_count
-	match kill_tracker:
-		10:
+	
+	if kill_tracker > level_rewards[0][0] && !level_rewards[0][1]:
 			speed+=15
-			GameState.kill_count+=1
-		15:
+			level_rewards[0][1] = true
+	if kill_tracker > level_rewards[1][0] && !level_rewards[1][1]:
 			damage_modifier+=25
 			bullet_count+=1
-			GameState.kill_count+=1
-		20:
+			level_rewards[1][1] = true
+	if kill_tracker > level_rewards[2][0] && !level_rewards[2][1]:
 			speed+=10
-			GameState.kill_count+=1
-		25:
+			level_rewards[2][1] = true
+	if kill_tracker > level_rewards[3][0] && !level_rewards[3][1]:
 			attack_spee-=0.3
-			GameState.kill_count+=1
-		30:
+			level_rewards[3][1] = true
+	if kill_tracker > level_rewards[4][0] && !level_rewards[4][1]:
 			speed+=5
-			GameState.kill_count+=1
-		35:
+			level_rewards[4][1] = true
+	if kill_tracker > level_rewards[5][0] && !level_rewards[5][1]:
 			attack_spee-=0.2
-			GameState.kill_count+=1
-		40:
+			level_rewards[5][1] = true
+	if kill_tracker > level_rewards[6][0] && !level_rewards[6][1]:
 			damage_modifier+=17
-			GameState.kill_count+=1
-		45:
+			level_rewards[6][1] = true
+	if kill_tracker > level_rewards[7][0] && !level_rewards[7][1]:
 			damage_modifier+=15
-			GameState.kill_count+=1
-		50:
+			level_rewards[7][1] = true
+	if kill_tracker > level_rewards[8][0] && !level_rewards[8][1]:
 			speed+=20
-			GameState.kill_count+=1
-		60:
+			level_rewards[8][1] = true
+	if kill_tracker > level_rewards[9][0] && !level_rewards[9][1]:
 			attack_spee-=0.2
-			GameState.kill_count+=1
-		80:
+			level_rewards[9][1] = true
+	if kill_tracker > level_rewards[10][0] && !level_rewards[10][1]:
 			speed+=10
-			GameState.kill_count+=1
-		90:
+			level_rewards[10][1] = true
+	if kill_tracker > level_rewards[11][0] && !level_rewards[11][1]:
 			damage_modifier+=20
 			bullet_count+=1
-			GameState.kill_count+=1
+			level_rewards[11][1] = true
 	pass
 
 func _on_attack_timer_timeout() -> void:

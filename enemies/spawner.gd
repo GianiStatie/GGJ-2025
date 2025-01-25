@@ -5,7 +5,7 @@ var enemies: Array
 var startTime = Time.get_ticks_msec()
 var difficultyJumpSeconds = 20
 var difficultySpikeSeconds = 60
-
+var enemySpawnTimerSeconds = 60
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and GameState.can_nuke:
@@ -68,6 +68,10 @@ func _set_difficulty(enemy: Node2D) -> void:
 	
 	enemy.max_health = enemy.max_health * difficultyMultiplier
 	enemy.damage = enemy.damage * difficultyMultiplier
+	
+	var enemySpawnPenalty = floor(elapsedSeconds / enemySpawnTimerSeconds) * 0.3
+	var newSpawnTime = max($EnemyTimer.wait_time - enemySpawnPenalty, 0.6)
+	$EnemyTimer.wait_time = newSpawnTime
 		
 func _get_enemy_spawn_position() -> Vector2:
 	var screenRect = get_viewport().size
