@@ -110,5 +110,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collision"]
 shape = SubResource("CapsuleShape2D_f3okn")
 
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
 [connection signal="body_entered" from="collision" to="." method="_on_collision_body_entered"]
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
