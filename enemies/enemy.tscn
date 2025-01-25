@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://wsvpcb8bmere"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_chkg3"]
-[ext_resource type="Texture2D" uid="uid://cfppeqv7didkn" path="res://assets/dungeon/0x72_DungeonTilesetII_v1.7.png" id="2_tvphr"]
-[ext_resource type="PackedScene" uid="uid://d0gi0k6jkf05m" path="res://effects/pentagram_bubble.tscn" id="3_28lgp"]
+[ext_resource type="Texture2D" uid="uid://dsoi88ju33wrm" path="res://assets/dungeon/0x72_DungeonTilesetII_v1.7.png" id="2_tvphr"]
+[ext_resource type="PackedScene" path="res://effects/pentagram_bubble.tscn" id="3_28lgp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5yig8"]
 atlas = ExtResource("2_tvphr")

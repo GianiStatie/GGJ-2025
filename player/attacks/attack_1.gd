@@ -6,8 +6,9 @@ var damage = 34
 func _ready() -> void:
 	pass # Replace with function body.
 
-func trigger(target):
+func trigger(target,dmg):
 	self.look_at(target)
+	damage+=dmg
 	self.apply_impulse(Vector2(target-self.global_position).normalized()*200)
 	
 
