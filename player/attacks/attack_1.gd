@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func trigger(target):
 	self.look_at(target)
-	self.apply_impulse(Vector2(target-self.global_position).normalized()*400)
+	self.apply_impulse(Vector2(target-self.global_position).normalized()*200)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

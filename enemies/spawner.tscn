@@ -6,6 +6,7 @@
 script = ExtResource("1_6e78v")
 
 [node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 0.7
 autostart = true
 
 [node name="EnemyMoveTimer" type="Timer" parent="."]
