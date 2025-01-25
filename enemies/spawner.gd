@@ -29,6 +29,7 @@ func _on_enemy_timer_timeout() -> void:
 	#print($RayCast2D.get_collider())
 	
 	if $RayCast2D.get_collider() != player:
+		_on_enemy_timer_timeout()
 		return
 	
 	var enemy : Node2D = enemy_scene.instantiate()
@@ -37,6 +38,7 @@ func _on_enemy_timer_timeout() -> void:
 	
 	add_child(enemy)
 	enemies.append(enemy)
+	GameState.enemy_spawns += 1
 
 func _get_enemy_spawn_position() -> Vector2:
 	var screenRect = get_viewport().size

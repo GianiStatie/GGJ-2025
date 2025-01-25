@@ -1,17 +1,15 @@
 extends Node2D
 
-var map_txt = """
-1111
-1001
-1001
-1111
-"""
+var size = Vector2.ZERO
+signal move_other_map(map, direction)
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	pass # Replace with function body.
+	size = $Floor.get_used_rect().size * $Floor.tile_set.tile_size
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	var direction = Vector2.LEFT
+	if body.global_position.x < $Area2D.global_position.x:
+		direction = Vector2.RIGHT
+	move_other_map.emit(self, direction)
