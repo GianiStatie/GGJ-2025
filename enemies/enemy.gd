@@ -8,6 +8,7 @@ var health: float = max_health : set = _on_health_changed
 var damage: float = 10
 var isPlayerCollision = false
 var effect = preload("res://effects/bubble_dead_particles.tscn")
+var bounceCount = 1
 
 signal player_health_perc_changed(perc)
 
@@ -41,12 +42,18 @@ func _on_player_collision() -> void:
 	var currentDirection = linear_velocity / speed
 	var bounceDirection = currentDirection * -1
 	look_at(bounceDirection)
-	linear_velocity = bounceDirection * speed * 2
+	linear_velocity = bounceDirection * speed * 5
 	var timer = get_node("BounceTimer")
 	timer.start()
 
 func _on_bounce_timer_timeout() -> void:
-	isPlayerCollision = false
+	bounceCount+=1
+	linear_velocity = linear_velocity / bounceCount
+	
+	if bounceCount == 10:
+		isPlayerCollision = false
+		var timer = get_node("BounceTimer")
+		timer.stop()
 	
 func _on_tree_exiting() -> void:
 	Utils.instance_scene_on_main(effect, global_position)
