@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="ggk2025"
-run/main_scene="res://player_test.tscn"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Utils="*res://singletons/Utils.gd"
 
 [display]
 

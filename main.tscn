@@ -1,13 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://brmxtexobyq21"]
+[gd_scene load_steps=5 format=3 uid="uid://bwxljiqer0pvs"]
 
-[ext_resource type="PackedScene" uid="uid://wsvpcb8bmere" path="res://enemies/enemy.tscn" id="1_36dci"]
+[ext_resource type="PackedScene" uid="uid://b780a8c64ruei" path="res://map/map.tscn" id="1_7uvnq"]
+[ext_resource type="PackedScene" uid="uid://bt50jqjhjvoy4" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
+[ext_resource type="PackedScene" uid="uid://blvhwsfu73wla" path="res://player/player.tscn" id="3_sit2e"]
+[ext_resource type="PackedScene" uid="uid://6q36qf7ayv3b" path="res://enemies/spawner.tscn" id="4_dcpxf"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node"]
 
-[node name="Enemy" parent="." instance=ExtResource("1_36dci")]
-position = Vector2(560, 292)
+[node name="Map" parent="." instance=ExtResource("1_7uvnq")]
+position = Vector2(98, 161)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(562, 293)
-scale = Vector2(-19909, -711.73)
-zoom = Vector2(5, 5)
+[node name="Node" parent="." instance=ExtResource("2_pkjkf")]
+
+[node name="player" parent="." instance=ExtResource("3_sit2e")]
+
+[node name="Spawner" parent="." instance=ExtResource("4_dcpxf")]

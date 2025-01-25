@@ -4,6 +4,7 @@ extends RigidBody2D
 
 var max_health: float = 30
 var health: float = max_health : set = _on_health_changed
+var effect = preload("res://effects/bubble_dead_particles.tscn")
 
 signal player_health_perc_changed(perc)
 
@@ -27,3 +28,6 @@ func _follow_target(target_position: Vector2) -> void:
 	var direction = global_position.direction_to(target_position)
 	look_at(direction)
 	linear_velocity = speed * direction
+
+func _on_tree_exiting() -> void:
+	Utils.instance_scene_on_main(effect, global_position)
