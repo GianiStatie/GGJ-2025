@@ -1,12 +1,17 @@
 extends CharacterBody2D
 
 var speed = 8000
-
-
 var aim_range=18
-
+var max_health: float = 100
+var health: float = max_health : set = _on_health_changed
 var dash_check=true
 var speed_bufer=speed
+
+func _on_health_changed(value):
+	health = max(value, 0)
+	if health <= 0:
+		queue_free()
+
 func get_input(delta):
 	#var input_direction = Input.get_vector("left", "right", "up", "down")
 	var input_direction = Input.get_vector("a", "d", "w", "s")
@@ -38,3 +43,8 @@ func _physics_process(delta):
 func _on_dash_timer_timeout() -> void:
 	dash_check=true
 	pass # Replace with function body.
+	
+func _on_collision_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy_group"):
+		health -= body.damage
+		body._on_player_collision()
