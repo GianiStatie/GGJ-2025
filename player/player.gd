@@ -3,7 +3,8 @@ extends CharacterBody2D
 var speed = 8000
 
 
-var aim_range=25
+var aim_range=18
+
 var dash_check=true
 var speed_bufer=speed
 func get_input(delta):
@@ -17,7 +18,8 @@ func get_input(delta):
 		speed_bufer=speed*40
 	velocity = input_direction * speed_bufer *delta
 	if Input.is_action_just_pressed("mouse_l_click") and self.global_position.distance_to(get_global_mouse_position()) >aim_range:
-		get_tree().get_nodes_in_group("pc_attack_tracker")[0].shoot(1,get_global_mouse_position(),$aim.global_position)
+		var start_pos = $aim/AimMarker.global_position
+		get_tree().get_nodes_in_group("pc_attack_tracker")[0].shoot(1,get_global_mouse_position(),start_pos)
 
 #func _unhandled_input(event):
 #	print (event)

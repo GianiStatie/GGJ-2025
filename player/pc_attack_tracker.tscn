@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhtekd5kgedpy"]
+[gd_scene load_steps=2 format=3 uid="uid://bt50jqjhjvoy4"]
 
 [ext_resource type="Script" path="res://player/pc_attack_tracker.gd" id="1_wc6gj"]
 
