@@ -2,6 +2,7 @@ extends RigidBody2D
 
 @export var speed = 50
 @onready var animation_player = $AnimationPlayer
+var default_sprite = "level1"
 
 var max_health: float = 100 : set = _on_max_health_changed
 var health: float = max_health : set = _on_health_changed
@@ -10,11 +11,27 @@ var isPlayerCollision = false
 var effect = preload("res://effects/bubble_dead_particles.tscn")
 var bounceCount = 1
 
+
+
 signal player_health_perc_changed(perc)
 
 func _on_max_health_changed(value):
 	max_health = value
 	health = value
+	# I know it can be done better, but not today
+	if max_health >= 110.0:
+		default_sprite = "level2"
+	if max_health >= 120.0:
+		default_sprite = "level3"
+	if max_health >= 130.0:
+		default_sprite = "level4"
+	if max_health >= 140.0:
+		default_sprite = "level5"
+	if max_health >= 150.0:
+		default_sprite = "level6"
+
+func _ready() -> void:
+	$Sprite2D.play(default_sprite)
 
 func _on_health_changed(value):
 	var new_health = max(value, 0)

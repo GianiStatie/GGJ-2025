@@ -375,9 +375,7 @@ script = ExtResource("1_chkg3")
 position = Vector2(0, -3)
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_a4lcu")
-animation = &"level6"
-autoplay = "level1"
-frame_progress = 0.0125698
+animation = &"level1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
