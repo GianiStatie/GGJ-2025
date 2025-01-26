@@ -17,10 +17,12 @@ var bullet_count=1
 @export var camera: Camera2D
 
 func _ready():
+	GameState.pc_hp=max_health
 	$RemoteTransform2D.remote_path = camera.get_path()
 
 func _on_health_changed(value):
 	health = max(value, 0)
+	GameState.pc_hp=health
 	if health <= 0:
 		is_dead = true
 		get_tree().change_scene_to_packed(scene)

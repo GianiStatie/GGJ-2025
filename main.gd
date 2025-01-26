@@ -19,6 +19,7 @@ func _process(delta: float) -> void:
 		$CanvasLayer/VBoxContainer/HBoxContainer3/dash_text_indicator.visible=true
 	else:
 		$CanvasLayer/VBoxContainer/HBoxContainer3/dash_text_indicator.visible=false
+	$"CanvasLayer/VBoxContainer/hp track/hp".value=GameState.pc_hp
 
 func _on_map_move_other_map(not_this_map: Variant, direction: Vector2) -> void:
 	var position_shift = Vector2(not_this_map.size.x, 0) * direction
