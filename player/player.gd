@@ -16,9 +16,18 @@ var bullet_count=1
 
 @export var camera: Camera2D
 
+var use_controller = false
+
+
 func _ready():
 	GameState.pc_hp=max_health
 	$RemoteTransform2D.remote_path = camera.get_path()
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		use_controller = false
+	elif event is InputEventJoypadMotion:
+		use_controller = true
 
 func _on_health_changed(value):
 	health = max(value, 0)
@@ -50,7 +59,10 @@ func get_input():
 		var start_pos = $aim/AimMarker.global_position
 		
 		for i in range(0,bullet_count):
-			get_tree().get_nodes_in_group("pc_attack_tracker")[0].shoot(1,get_global_mouse_position(),start_pos,damage_modifier)
+			var direction = global_position.direction_to(get_global_mouse_position()).normalized()
+			if use_controller:
+				direction = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
+			get_tree().get_nodes_in_group("pc_attack_tracker")[0].shoot(1,direction,start_pos,damage_modifier)
 		$attack_timer.start(attack_spee)
 #func _unhandled_input(event):
 #	print (event)
@@ -62,8 +74,15 @@ func _physics_process(delta):
 	
 	#print(dash_check)
 	move_and_slide()
-	var mouse_pos_x=(self.global_position.x + aim_range * cos(self.get_angle_to(get_global_mouse_position())))
-	var mouse_pos_y=(self.global_position.y + aim_range * sin(self.get_angle_to(get_global_mouse_position())))
+	
+	var angle = Vector2.ZERO
+	if use_controller:
+		var joystick_vector = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
+		angle = atan2(joystick_vector.y, joystick_vector.x)
+	else:
+		angle = self.get_angle_to(get_global_mouse_position())
+	var mouse_pos_x=(self.global_position.x + aim_range * cos(angle))
+	var mouse_pos_y=(self.global_position.y + aim_range * sin(angle))
 	$aim.global_position=Vector2(mouse_pos_x , mouse_pos_y)
 	
 	var mouse_direction = global_position.direction_to($aim.global_position)

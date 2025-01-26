@@ -1,10 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3dltv7pdgtgo"]
+[gd_scene load_steps=5 format=3 uid="uid://c7kin8tc8vq2q"]
 
 [ext_resource type="Script" path="res://enemies/enemy_bullet.gd" id="1_bup0t"]
-[ext_resource type="Texture2D" uid="uid://bqeejs33ahhj7" path="res://assets/bubbles/8x8-bubble.png" id="2_ygmsu"]
+[ext_resource type="Texture2D" uid="uid://cakexxqshi4uj" path="res://assets/bubbles/8x8-bubble.png" id="2_ygmsu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfec7"]
-size = Vector2(8.54056, 8.71654)
+size = Vector2(3, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eax0x"]
 size = Vector2(10.4963, 10.4356)

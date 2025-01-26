@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_6ppmv"]
 [ext_resource type="PackedScene" uid="uid://b780a8c64ruei" path="res://map/map.tscn" id="2_ng5he"]
-[ext_resource type="PackedScene" uid="uid://dhtekd5kgedpy" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
+[ext_resource type="PackedScene" uid="uid://bt50jqjhjvoy4" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
 [ext_resource type="PackedScene" uid="uid://blvhwsfu73wla" path="res://player/player.tscn" id="3_sit2e"]
 [ext_resource type="PackedScene" uid="uid://6q36qf7ayv3b" path="res://enemies/spawner.tscn" id="4_dcpxf"]
 [ext_resource type="Script" path="res://player/camera_2d.gd" id="5_tops8"]
-[ext_resource type="AudioStream" uid="uid://dca8ui2g1lws3" path="res://assets/music/Three Red Hearts - Penultimate.ogg" id="6_gv4vp"]
-[ext_resource type="PackedScene" uid="uid://bsjvxw38dptno" path="res://effects/damage_flash.tscn" id="8_chedk"]
+[ext_resource type="AudioStream" uid="uid://bk72p0i7nlopk" path="res://assets/music/Three Red Hearts - Penultimate.ogg" id="6_gv4vp"]
+[ext_resource type="PackedScene" path="res://effects/damage_flash.tscn" id="8_chedk"]
 
 [node name="Main" type="Node" groups=["main_group"]]
 script = ExtResource("1_6ppmv")

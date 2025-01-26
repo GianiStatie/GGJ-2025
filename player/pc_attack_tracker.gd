@@ -13,8 +13,9 @@ func _process(delta: float) -> void:
 	pass
 
 
-func shoot(type,target,position,damage_modifier):
+func shoot(type,direction,position,damage_modifier):
 	var tmp_attack
+	var target = position + direction * 100
 	if type ==1:
 		tmp_attack=bullet1.duplicate()
 		$attack_tracker.add_child(tmp_attack)
