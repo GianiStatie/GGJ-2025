@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_6ppmv"]
 [ext_resource type="PackedScene" uid="uid://b780a8c64ruei" path="res://map/map.tscn" id="2_ng5he"]
-[ext_resource type="PackedScene" uid="uid://bt50jqjhjvoy4" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
+[ext_resource type="PackedScene" uid="uid://dhtekd5kgedpy" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
 [ext_resource type="PackedScene" uid="uid://blvhwsfu73wla" path="res://player/player.tscn" id="3_sit2e"]
 [ext_resource type="PackedScene" uid="uid://6q36qf7ayv3b" path="res://enemies/spawner.tscn" id="4_dcpxf"]
-[ext_resource type="AudioStream" uid="uid://bk72p0i7nlopk" path="res://assets/music/Three Red Hearts - Penultimate.ogg" id="6_gv4vp"]
+[ext_resource type="AudioStream" uid="uid://bghgnacjvqwlx" path="res://assets/music/Three Red Hearts - Penultimate.ogg" id="6_gv4vp"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_6ppmv")
@@ -55,6 +55,21 @@ layout_mode = 2
 size_flags_horizontal = 4
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="dash_indicator" type="ProgressBar" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 5.0
+value = 1.0
+fill_mode = 1
+
+[node name="dash_text_indicator" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
+visible = false
+layout_mode = 2
+text = "DASH"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_gv4vp")

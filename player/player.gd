@@ -29,7 +29,7 @@ func get_input():
 		speed_bufer=speed
 	if Input.is_action_just_pressed("shift") and dash_check:
 		dash_check=false
-		$dash_timer.start(attack_spee)
+		$dash_timer.start()
 		speed_bufer=speed*40
 	velocity = input_direction * speed_bufer 
 	if Input.is_action_just_pressed("mouse_l_click") and can_shot and self.global_position.distance_to(get_global_mouse_position()) >aim_range:
@@ -62,6 +62,7 @@ func _physics_process(delta):
 		$CharacterSprite.play("Run")
 		
 
+
 func _on_dash_timer_timeout() -> void:
 	dash_check=true
 	pass # Replace with function body.
@@ -75,7 +76,7 @@ var level_rewards = [[5, false], [8, false], [15, false], [25, false], [40, fals
 
 func _process(delta: float) -> void:
 	var kill_tracker=GameState.kill_count
-	
+	GameState.pc_dash_time = snapped($dash_timer.time_left, 0.01) 
 	if kill_tracker > level_rewards[0][0] && !level_rewards[0][1]:
 			speed+=15
 			level_rewards[0][1] = true
