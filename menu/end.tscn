@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cp0eof8smhuag"]
 
 [ext_resource type="Script" path="res://menu/end.gd" id="1_8b8vj"]
-[ext_resource type="Texture2D" uid="uid://btempecyb3a4q" path="res://assets/menubg.png" id="2_qpcb4"]
+[ext_resource type="Texture2D" uid="uid://cmuwrpv06qar" path="res://assets/menubg.png" id="2_qpcb4"]
 
 [node name="end" type="Control"]
 layout_mode = 3
@@ -45,22 +45,38 @@ text = "Main Menu"
 [node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
-text = "You were overwhelmed.  You cleaned many of them. 
+text = "You were overwhelmed.  You cleaned many of them.
 
-Clean Ridence"
+Clean Riddance"
 editable = false
 wrap_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "clean count"
+text = "clean count:"
 horizontal_alignment = 2
 
-[node name="clean_count" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="clean_count" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "time survived:"
+horizontal_alignment = 2
+
+[node name="time_survived" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 

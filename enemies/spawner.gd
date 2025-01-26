@@ -72,6 +72,7 @@ func _on_enemy_timer_timeout() -> void:
 func _set_difficulty(enemy: Node2D) -> float:
 	var currentTime = Time.get_ticks_msec()
 	var elapsedSeconds = (currentTime - startTime) / 1000
+	GameState.session_time = elapsedSeconds
 	
 	# every difficultyJumpSeconds increase difficulty by 10%
 	var baseDifficultyMultiplier = floor(elapsedSeconds / difficultyJumpSeconds) * 0.1 + 1
