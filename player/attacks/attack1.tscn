@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://1oa8jo7sa0yd"]
+[gd_scene load_steps=7 format=3 uid="uid://1oa8jo7sa0yd"]
 
 [ext_resource type="Script" path="res://player/attacks/attack_1.gd" id="1_egapq"]
-[ext_resource type="Texture2D" uid="uid://bqeejs33ahhj7" path="res://assets/bubbles/8x8-bubble.png" id="2_ui2l1"]
+[ext_resource type="Texture2D" uid="uid://cakexxqshi4uj" path="res://assets/bubbles/8x8-bubble.png" id="2_ui2l1"]
+[ext_resource type="AudioStream" uid="uid://76wi1vxfml1w" path="res://assets/sfx/Bubble 1.wav" id="3_fidnh"]
+[ext_resource type="Script" path="res://effects/sound_effect_pitch.gd" id="4_vd3y2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfec7"]
 size = Vector2(8.54056, 8.71654)
@@ -46,6 +48,13 @@ texture = ExtResource("2_ui2l1")
 emission_shape = 1
 emission_sphere_radius = 4.0
 gravity = Vector2(0, 0)
+
+[node name="Blow2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_fidnh")
+volume_db = -5.0
+pitch_scale = 1.75
+autoplay = true
+script = ExtResource("4_vd3y2")
 
 [connection signal="body_entered" from="colistion" to="." method="_on_colistion_body_entered"]
 [connection signal="screen_exited" from="screen_check" to="." method="_on_screen_check_screen_exited"]
