@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8vea6sc85ui4"]
+[gd_scene load_steps=3 format=3 uid="uid://c8vea6sc85ui4"]
 
 [ext_resource type="Script" path="res://menu/info.gd" id="1_dse4g"]
+[ext_resource type="Texture2D" uid="uid://btempecyb3a4q" path="res://assets/menubg.png" id="2_uv5va"]
 
 [node name="Info" type="Control"]
 layout_mode = 3
@@ -18,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_uv5va")
 
 [node name="TextEdit" type="TextEdit" parent="."]
 custom_minimum_size = Vector2(800, 600)
@@ -33,15 +35,15 @@ offset_right = 4.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "The world is filled with filthy demons. Spreding filth and misery all over.
+text = "The world is filled with filthy demons. Spreding filth all over the land. 
 
-But there is one who can clean it all up.
+Here comes the one with the solution to clean them all. 
 
-He is know as 
+BUBLES
 
 
-
-BUBLES"
+Objective: Survive"
+editable = false
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1

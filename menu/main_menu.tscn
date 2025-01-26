@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://n86a3s8afxm1"]
+[gd_scene load_steps=3 format=3 uid="uid://n86a3s8afxm1"]
 
 [ext_resource type="Script" path="res://menu/main_menu.gd" id="1_xq4ov"]
+[ext_resource type="Texture2D" uid="uid://btempecyb3a4q" path="res://assets/menubg.png" id="2_5fecr"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -18,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_5fecr")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(480, 0)

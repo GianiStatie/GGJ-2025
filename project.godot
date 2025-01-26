@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="ggk2025"
-run/main_scene="res://main.tscn"
+config/description="https://globalgamejam.org/jam-sites/2025/ggj-freezelive-2025"
+run/main_scene="res://menu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -23,10 +24,6 @@ GameState="*res://singletons/GameState.gd"
 [debug]
 
 settings/stdout/print_fps=true
-
-[display]
-
-window/stretch/mode="viewport"
 
 [dotnet]
 
@@ -102,3 +99,4 @@ textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.162066, 0.162066, 0.162066, 1)
+anti_aliasing/quality/msaa_2d=1
