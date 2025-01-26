@@ -61,7 +61,7 @@ func _on_enemy_timer_timeout() -> void:
 	
 	if difficultyMultiplyer >= 1.3:
 		var randomBulletPosition = _get_enemy_spawn_position()
-		var spawnPercent = minf((difficultyMultiplyer - 1.3), 0.5)
+		var spawnPercent = minf(0.1 + (difficultyMultiplyer - 1.3), 0.4)
 		var rnd = randf_range(0,1)
 		if rnd < spawnPercent:
 			var bullet = bullet_scene.instantiate()
@@ -84,7 +84,7 @@ func _set_difficulty(enemy: Node2D) -> float:
 	enemy.damage = enemy.damage * difficultyMultiplier
 	
 	var enemySpawnPenalty = floor(elapsedSeconds / enemySpawnTimerSeconds) * 0.3
-	var newSpawnTime = max($EnemyTimer.wait_time - enemySpawnPenalty, 0.3)
+	var newSpawnTime = max($EnemyTimer.wait_time - enemySpawnPenalty, 0.5)
 	$EnemyTimer.wait_time = newSpawnTime
 	return baseDifficultyMultiplier
 		

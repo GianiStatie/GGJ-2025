@@ -1,18 +1,12 @@
 extends RigidBody2D
 
 var damage = 20
+var health: float = 1 : set = _on_health_changed
 var triggered = true
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	
-	pass
-
+func _on_health_changed(value):
+	if health <= 0:
+		queue_free()
 
 func _on_screen_check_screen_exited() -> void:
 	self.visible=false
@@ -32,5 +26,5 @@ func _set_global_position(position: Vector2) -> void:
 func _follow_target(target: Vector2) -> void:
 	if triggered:
 		self.look_at(target)
-		self.apply_impulse(Vector2(target-self.global_position).normalized()*100)
+		self.apply_impulse(Vector2(target-self.global_position).normalized()*250)
 		triggered = false
