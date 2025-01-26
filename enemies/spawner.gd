@@ -1,6 +1,7 @@
 extends Node
 
 var enemy_scene = preload("res://enemies/enemy.tscn")
+var bullet_scene = preload("res://enemies/enemy_bullet.tscn")
 var startTime = Time.get_ticks_msec()
 var difficultyJumpSeconds = 20
 var difficultySpikeSeconds = 60
@@ -53,17 +54,28 @@ func _on_enemy_timer_timeout() -> void:
 	var enemy : Node2D = enemy_scene.instantiate()
 	enemy._set_global_position(globalEnemyPosition)
 	enemy._follow_target(globalPlayerPosition)
-	_set_difficulty(enemy)
+	var difficultyMultiplyer = _set_difficulty(enemy)
 	
 	add_child(enemy)
 	GameState.enemy_spawns += 1
 	
-func _set_difficulty(enemy: Node2D) -> void:
+	if difficultyMultiplyer >= 1.3:
+		var randomBulletPosition = _get_enemy_spawn_position()
+		var spawnPercent = minf((difficultyMultiplyer - 1.3), 0.5)
+		var rnd = randf_range(0,1)
+		if rnd < spawnPercent:
+			var bullet = bullet_scene.instantiate()
+			bullet._set_global_position(globalEnemyPosition)
+			bullet._follow_target(globalPlayerPosition)
+			add_child(bullet)
+	
+func _set_difficulty(enemy: Node2D) -> float:
 	var currentTime = Time.get_ticks_msec()
 	var elapsedSeconds = (currentTime - startTime) / 1000
 	
 	# every difficultyJumpSeconds increase difficulty by 10%
-	var difficultyMultiplier = floor(elapsedSeconds / difficultyJumpSeconds) * 0.1 + 1
+	var baseDifficultyMultiplier = floor(elapsedSeconds / difficultyJumpSeconds) * 0.1 + 1
+	var difficultyMultiplier = baseDifficultyMultiplier
 	# every difficultySpikeSeconds add 50% difficulty for difficultyJumpSeconds
 	if elapsedSeconds >= difficultySpikeSeconds && elapsedSeconds % difficultySpikeSeconds < difficultyJumpSeconds:
 		difficultyMultiplier = difficultyMultiplier * 1.5
@@ -74,6 +86,7 @@ func _set_difficulty(enemy: Node2D) -> void:
 	var enemySpawnPenalty = floor(elapsedSeconds / enemySpawnTimerSeconds) * 0.3
 	var newSpawnTime = max($EnemyTimer.wait_time - enemySpawnPenalty, 0.3)
 	$EnemyTimer.wait_time = newSpawnTime
+	return baseDifficultyMultiplier
 		
 func _get_enemy_spawn_position() -> Vector2:
 	var screenRect = get_viewport().size
