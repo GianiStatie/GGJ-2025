@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwxljiqer0pvs"]
+[gd_scene load_steps=8 format=3 uid="uid://bar5x6bbdhrqc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6ppmv"]
 [ext_resource type="PackedScene" uid="uid://b780a8c64ruei" path="res://map/map.tscn" id="2_ng5he"]
 [ext_resource type="PackedScene" uid="uid://dhtekd5kgedpy" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
 [ext_resource type="PackedScene" uid="uid://blvhwsfu73wla" path="res://player/player.tscn" id="3_sit2e"]
 [ext_resource type="PackedScene" uid="uid://6q36qf7ayv3b" path="res://enemies/spawner.tscn" id="4_dcpxf"]
+[ext_resource type="Script" path="res://player/camera_2d.gd" id="5_tops8"]
 [ext_resource type="AudioStream" uid="uid://bghgnacjvqwlx" path="res://assets/music/Three Red Hearts - Penultimate.ogg" id="6_gv4vp"]
 
 [node name="Main" type="Node"]
@@ -17,8 +18,13 @@ position = Vector2(1472, 0)
 
 [node name="Node" parent="." instance=ExtResource("2_pkjkf")]
 
-[node name="player" parent="." instance=ExtResource("3_sit2e")]
+[node name="Camera2D2" type="Camera2D" parent="."]
+zoom = Vector2(1.8, 1.8)
+script = ExtResource("5_tops8")
+
+[node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_sit2e")]
 position = Vector2(1326, -11)
+camera = NodePath("../Camera2D2")
 
 [node name="Spawner" parent="." instance=ExtResource("4_dcpxf")]
 
@@ -63,13 +69,14 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 max_value = 5.0
-value = 1.0
 fill_mode = 1
 
 [node name="dash_text_indicator" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
-visible = false
 layout_mode = 2
+size_flags_horizontal = 4
 text = "DASH"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_gv4vp")
@@ -78,4 +85,5 @@ autoplay = true
 
 [connection signal="move_other_map" from="Map" to="." method="_on_map_move_other_map"]
 [connection signal="move_other_map" from="Map2" to="." method="_on_map_move_other_map"]
+[connection signal="nuking_time" from="Spawner" to="Camera2D2" method="_on_spawner_nuking_time"]
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="play"]

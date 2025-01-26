@@ -102,9 +102,6 @@ shape = SubResource("RectangleShape2D_pb1hj")
 wait_time = 5.0
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.8, 1.8)
-
 [node name="collision" type="Area2D" parent="."]
 collision_mask = 2
 
@@ -114,6 +111,8 @@ shape = SubResource("CapsuleShape2D_f3okn")
 [node name="attack_timer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
 [connection signal="body_entered" from="collision" to="." method="_on_collision_body_entered"]
