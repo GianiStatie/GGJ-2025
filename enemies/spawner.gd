@@ -1,7 +1,6 @@
 extends Node
 
 var enemy_scene = preload("res://enemies/enemy.tscn")
-var enemies: Array
 var startTime = Time.get_ticks_msec()
 var difficultyJumpSeconds = 20
 var difficultySpikeSeconds = 60
@@ -28,9 +27,10 @@ func _on_enemy_move_timer_timeout() -> void:
 		return
 		
 	var playerPosition = player.global_position
+	
+	var enemies = get_tree().get_nodes_in_group("enemy_group")
 	for enemy in enemies:
-		if is_instance_valid(enemy):
-			enemy._follow_target(playerPosition)
+		enemy._follow_target(playerPosition)
 
 # spawns enemies at random locations and makes them move towards the player
 func _on_enemy_timer_timeout() -> void:
@@ -57,7 +57,6 @@ func _on_enemy_timer_timeout() -> void:
 	_set_difficulty(enemy)
 	
 	add_child(enemy)
-	enemies.append(enemy)
 	GameState.enemy_spawns += 1
 	
 func _set_difficulty(enemy: Node2D) -> void:
