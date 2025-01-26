@@ -36,7 +36,10 @@ func get_input():
 		speed_bufer=speed
 	if Input.is_action_just_pressed("shift") and dash_check:
 		dash_check=false
+		$blur.visible=true
 		$dash_timer.start()
+		$blur.look_at(input_direction*10000)
+		$blursoundefect.play()
 		speed_bufer=speed*40
 	velocity = input_direction * speed_bufer 
 	if Input.is_action_just_pressed("mouse_l_click") and can_shot and self.global_position.distance_to(get_global_mouse_position()) >aim_range:
@@ -82,6 +85,9 @@ func _on_collision_body_entered(body: Node2D) -> void:
 var level_rewards = [[5, false], [8, false], [15, false], [25, false], [40, false], [55, false], [70, false], [85, false], [100, false], [120, false], [150, false], [200, false], ]
 
 func _process(delta: float) -> void:
+	print($dash_timer.time_left)
+	if $dash_timer.time_left <4.5:
+		$blur.visible=false
 	var kill_tracker=GameState.kill_count
 	GameState.pc_dash_time = snapped($dash_timer.time_left, 0.01) 
 	if kill_tracker > level_rewards[0][0] && !level_rewards[0][1]:
