@@ -14,6 +14,11 @@ var damage_modifier=0
 var attack_spee=0.8
 var bullet_count=1
 
+@export var camera: Camera2D
+
+func _ready():
+	$RemoteTransform2D.remote_path = camera.get_path()
+
 func _on_health_changed(value):
 	health = max(value, 0)
 	if health <= 0:

@@ -7,8 +7,12 @@ var difficultyJumpSeconds = 20
 var difficultySpikeSeconds = 60
 var enemySpawnTimerSeconds = 60
 
+signal nuking_time
+
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and GameState.can_nuke:
+		nuking_time.emit()
 		for child in get_children():
 			if child.is_in_group("enemy_group"):
 				child.health -= 100
