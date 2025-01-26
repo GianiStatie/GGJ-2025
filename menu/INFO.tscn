@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8vea6sc85ui4"]
+[gd_scene load_steps=3 format=3 uid="uid://ctl40is5v6peu"]
 
 [ext_resource type="Script" path="res://menu/info.gd" id="1_dse4g"]
-[ext_resource type="Texture2D" uid="uid://btempecyb3a4q" path="res://assets/menubg.png" id="2_uv5va"]
+[ext_resource type="Texture2D" uid="uid://cmuwrpv06qar" path="res://assets/menubg.png" id="2_uv5va"]
 
 [node name="Info" type="Control"]
 layout_mode = 3
@@ -35,14 +35,15 @@ offset_right = 4.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "The world is filled with filthy demons. Spreding filth all over the land. 
+text = "The world is filled with filthy demons. Spreading filth all over the land. 
 
 Here comes the one with the solution to clean them all. 
 
-BUBLES
+BUBBLES, the Dark Magician
 
+Objective: Survive
 
-Objective: Survive"
+Game made by: Bubblemans (Sorin, Giani, Paul)"
 editable = false
 
 [node name="Button" type="Button" parent="."]

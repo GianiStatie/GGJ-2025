@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dquinof2mxd7t"]
+[gd_scene load_steps=3 format=3 uid="uid://dax2aioj2g78g"]
 
 [ext_resource type="Script" path="res://menu/how_to.gd" id="1_igyyo"]
-[ext_resource type="Texture2D" uid="uid://btempecyb3a4q" path="res://assets/menubg.png" id="2_pot5k"]
+[ext_resource type="Texture2D" uid="uid://cmuwrpv06qar" path="res://assets/menubg.png" id="2_pot5k"]
 
 [node name="HOW_TO" type="Control"]
 layout_mode = 3
@@ -48,7 +48,7 @@ text = "MOVEMENT : WASD"
 
 [node name="Label2" type="Label" parent="BoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "SHOOT: LEFT MOUSE CLIK"
+text = "SHOOT: LEFT MOUSE CLICK"
 
 [node name="Label3" type="Label" parent="BoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://n86a3s8afxm1"]
+[gd_scene load_steps=5 format=3 uid="uid://n86a3s8afxm1"]
 
 [ext_resource type="Script" path="res://menu/main_menu.gd" id="1_xq4ov"]
-[ext_resource type="Texture2D" uid="uid://btempecyb3a4q" path="res://assets/menubg.png" id="2_5fecr"]
+[ext_resource type="Texture2D" uid="uid://cmuwrpv06qar" path="res://assets/menubg.png" id="2_5fecr"]
+[ext_resource type="FontFile" uid="uid://ctsxeeq6rq8d0" path="res://assets/fonts/UnifrakturMaguntia-Regular.ttf" id="3_wspje"]
+
+[sub_resource type="Theme" id="Theme_fdv3v"]
+resource_name = "TitleTheme"
+default_font = ExtResource("3_wspje")
+default_font_size = 60
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -21,6 +27,26 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_5fecr")
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -477.5
+offset_top = 50.0
+offset_right = 477.5
+offset_bottom = 181.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = SubResource("Theme_fdv3v")
+text = "The Misadventures of Bubbles, 
+the Dark Magician"
+horizontal_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(480, 0)
 layout_mode = 1
@@ -29,10 +55,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -240.0
+offset_top = -124.0
+offset_right = 240.0
+offset_bottom = 244.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -40,12 +66,13 @@ alignment = 1
 [node name="start" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "START"
 
 [node name="info" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-text = "Info"
+text = "INFO"
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 120)
