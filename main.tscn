@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwxljiqer0pvs"]
+[gd_scene load_steps=7 format=3 uid="uid://bwxljiqer0pvs"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6ppmv"]
 [ext_resource type="PackedScene" uid="uid://b780a8c64ruei" path="res://map/map.tscn" id="2_ng5he"]
-[ext_resource type="PackedScene" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
+[ext_resource type="PackedScene" uid="uid://bt50jqjhjvoy4" path="res://player/pc_attack_tracker.tscn" id="2_pkjkf"]
 [ext_resource type="PackedScene" uid="uid://blvhwsfu73wla" path="res://player/player.tscn" id="3_sit2e"]
 [ext_resource type="PackedScene" uid="uid://6q36qf7ayv3b" path="res://enemies/spawner.tscn" id="4_dcpxf"]
+[ext_resource type="AudioStream" uid="uid://bk72p0i7nlopk" path="res://assets/music/Three Red Hearts - Penultimate.ogg" id="6_gv4vp"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_6ppmv")
@@ -55,5 +56,11 @@ size_flags_horizontal = 4
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_gv4vp")
+volume_db = -15.0
+autoplay = true
+
 [connection signal="move_other_map" from="Map" to="." method="_on_map_move_other_map"]
 [connection signal="move_other_map" from="Map2" to="." method="_on_map_move_other_map"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="play"]

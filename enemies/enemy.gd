@@ -25,6 +25,7 @@ func _on_health_changed(value):
 		if progression < 1:
 			player_health_perc_changed.emit(progression)
 			animation_player.play("Damaged")
+			$AudioStreamPlayer2D.play()
 		health = new_health
 	if health <= 0:
 		queue_free()

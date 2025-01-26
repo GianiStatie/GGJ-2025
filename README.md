@@ -1,3 +1,5 @@
 
 ## Credits 
-Asset pack: [16x16 DungeonTileset II](https://0x72.itch.io/dungeontileset-ii)
+Asset pack: 
+- Sprites: [16x16 DungeonTileset II](https://0x72.itch.io/dungeontileset-ii)
+- SFX: [8-bit / 16-bit Sound Effects (x25) Pack](https://jdwasabi.itch.io/8-bit-16-bit-sound-effects-pack)
