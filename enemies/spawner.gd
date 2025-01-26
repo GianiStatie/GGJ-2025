@@ -45,7 +45,6 @@ func _on_enemy_timer_timeout() -> void:
 	$RayCast2D.global_position = globalEnemyPosition
 	$RayCast2D.target_position =  globalPlayerPosition - globalEnemyPosition
 	$RayCast2D.force_raycast_update()
-	#print($RayCast2D.get_collider())
 	
 	if $RayCast2D.get_collider() != player:
 		_on_enemy_timer_timeout()

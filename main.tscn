@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bar5x6bbdhrqc"]
+[gd_scene load_steps=9 format=3 uid="uid://bwxljiqer0pvs"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6ppmv"]
 [ext_resource type="PackedScene" uid="uid://b780a8c64ruei" path="res://map/map.tscn" id="2_ng5he"]
@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://blvhwsfu73wla" path="res://player/player.tscn" id="3_sit2e"]
 [ext_resource type="PackedScene" uid="uid://6q36qf7ayv3b" path="res://enemies/spawner.tscn" id="4_dcpxf"]
 [ext_resource type="Script" path="res://player/camera_2d.gd" id="5_tops8"]
-[ext_resource type="AudioStream" uid="uid://bghgnacjvqwlx" path="res://assets/music/Three Red Hearts - Penultimate.ogg" id="6_gv4vp"]
+[ext_resource type="AudioStream" uid="uid://dca8ui2g1lws3" path="res://assets/music/Three Red Hearts - Penultimate.ogg" id="6_gv4vp"]
+[ext_resource type="PackedScene" uid="uid://bsjvxw38dptno" path="res://effects/damage_flash.tscn" id="8_chedk"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" groups=["main_group"]]
 script = ExtResource("1_6ppmv")
 
 [node name="Map" parent="." instance=ExtResource("2_ng5he")]
@@ -29,6 +30,9 @@ camera = NodePath("../Camera2D2")
 [node name="Spawner" parent="." instance=ExtResource("4_dcpxf")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DamageFlash" parent="CanvasLayer" instance=ExtResource("8_chedk")]
+color = Color(0.552941, 0, 0, 0)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 offset_right = 40.0

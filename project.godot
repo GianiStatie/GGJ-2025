@@ -33,6 +33,7 @@ project/assembly_name="ggk2025"
 
 player_group=""
 enemy_group=""
+main_group=""
 
 [input]
 

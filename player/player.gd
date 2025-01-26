@@ -23,6 +23,9 @@ func _ready():
 func _on_health_changed(value):
 	health = max(value, 0)
 	GameState.pc_hp=health
+	
+	get_tree().get_nodes_in_group("main_group")[0]._trigger_damage_flash()
+	
 	if health <= 0:
 		is_dead = true
 		get_tree().change_scene_to_packed(scene)
@@ -85,7 +88,6 @@ func _on_collision_body_entered(body: Node2D) -> void:
 var level_rewards = [[5, false], [8, false], [15, false], [25, false], [40, false], [55, false], [70, false], [85, false], [100, false], [120, false], [150, false], [200, false], ]
 
 func _process(delta: float) -> void:
-	print($dash_timer.time_left)
 	if $dash_timer.time_left <4.5:
 		$blur.visible=false
 	var kill_tracker=GameState.kill_count
