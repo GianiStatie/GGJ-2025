@@ -10,8 +10,8 @@ var damage: float = 10
 var isPlayerCollision = false
 var effect = preload("res://effects/bubble_dead_particles.tscn")
 var bounceCount = 1
-
-
+var last_position=Vector2(0,0)
+var anti_stuck_counter=10
 
 signal player_health_perc_changed(perc)
 
@@ -31,6 +31,7 @@ func _on_max_health_changed(value):
 		default_sprite = "level6"
 
 func _ready() -> void:
+	last_position=self.global_position
 	$Sprite2D.play(default_sprite)
 
 func _on_health_changed(value):
@@ -53,7 +54,17 @@ func _set_global_position(position: Vector2) -> void:
 func _follow_target(target_position: Vector2) -> void:
 	if isPlayerCollision:
 		return
+	if self.global_position.distance_to(last_position) <2 and anti_stuck_counter>0:
 		
+		anti_stuck_counter-=1
+		if anti_stuck_counter < 6:
+			$CollisionShape2D.disabled=true
+	else:
+		anti_stuck_counter+=1
+	last_position=self.global_position
+	if anti_stuck_counter == 0 or anti_stuck_counter ==10:
+		anti_stuck_counter=10
+		$CollisionShape2D.disabled=false
 	var direction = global_position.direction_to(target_position).normalized()
 	linear_velocity = speed * direction
 	$Sprite2D.flip_h = direction.x < 0
